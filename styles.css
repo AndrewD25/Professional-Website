@@ -1,0 +1,150 @@
+/*
+Andrew Deal
+Professional Website
+First submission due 8/4/23
+*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0; /* div backgrounds cover screen edge to edge */ 
+    overflow-x: hidden; /* disable horizontal scrollbar */
+}
+
+#linklist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #20A4A2; /* The main accent color used for the whole site */
+    display: flex; 
+    justify-content: center; 
+    position: fixed;
+    z-index: 999999;
+    
+    width: 100%;
+    /*
+    width: 60%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    left: 20%; 
+    */
+}
+
+#linklist > li {
+    display: inline; 
+}
+
+#linklist > li a {
+    /* Set up how links appear in the horizontal list */
+    display: block;
+    color: #252525;
+    text-align: center;
+    font-size: 1.65vw;
+    padding: 1em;
+    text-decoration: none;
+}
+
+#linklist > li a:hover {
+    /* Horizontal list links darken on hover */
+    background-color: #1b8d8b;
+}
+
+/*TEMP DELETE LATER*/
+div {
+    border: 1px dashed limegreen;
+}
+/*----------------*/
+
+#main {
+    width: 100%;
+    background: linear-gradient(to right, white 50%, black 50%);
+    /* Screen split so half is black and half is white */
+}
+
+#main > div {
+    height: 53vw; /* Approx height of screen based on average ratio of width to height on monitor */
+}
+
+.leftAlign {
+    text-align: left;
+    padding-left: 14.65vw;
+}
+
+.rightAlign {
+    text-align: right;
+    padding-right: 14.65vw;
+}
+
+.gridContainer {
+    display: grid;
+    /* 10x10 grid setup class */
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+}
+
+#main h1, #main h2, #main h3, #main h4, #main p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: white;
+    mix-blend-mode: difference;
+    /* Font shows white on black bg and black om white bg */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+#titlePage > div {
+    display: flex;
+    justify-content: space-around;
+    width: 75vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 8vw;
+}
+
+#titlePageText {
+    width: 43vw;
+    text-align: right;
+    margin-top: 20vw;
+    padding-right: 3vw;
+    margin-bottom: 3vw;
+}
+
+#nameTitle {
+    font-size: 7vw;
+    display: inline;
+}
+
+#subtitle {
+    display: inline;
+}
+
+#titlePage hr {
+    border: none; /* Remove the default border */
+    border-top: 5px solid #1b8d8b;
+    width: 30vw;
+}
+
+#me {
+    display: inline;
+    width: 29vw;
+}
+
+#main h2 {
+    font-size: 4.5vw;
+}
+
+#main h3 {
+    font-size: 2.75vw;  
+}
+
+#main h4 {
+    font-size: 2vw;  
+}
+
+#main p {
+    font-size: 1.65vw;
+}
