@@ -6,6 +6,12 @@ First submission due 8/4/23
 
 html {
     scroll-behavior: smooth;
+
+    /*Stop text from being selected
+    -webkit-user-select: none; /* Safari
+    -ms-user-select: none; /* IE 10 and IE 11 
+    user-select: none; /* Standard syntax 
+    */
 }
 
 body {
@@ -121,7 +127,7 @@ div {
 
 hr {
     border: none; /* Remove the default border */
-    border-top: 5px solid #1b8d8b;
+    border-top: 5px solid #20A4A2;
 }
 
 #titlePage > div {
@@ -175,21 +181,35 @@ hr {
     line-height: 2.5vw;
 } 
 
-#projectsTextContainer {
-    width: 38vw;
+#coreValuesTab {
+    margin-top: 2vw;
+    width: 50%;
+    display: flex;
+    justify-content: center;
 }
 
-#projectsTextContainer hr {
-    width: 22vw;
-    float: left;
+#coreValuesTab p {
+    font-family: 'Courier New', monospace;
+    background-color: #20a4a2;
+    color: #252525;
+    mix-blend-mode: normal;
+    width: auto;
+    padding: 1vw 2.25vw 1vw 2.25vw;
+    text-align: center;
+    text-indent: 0;
+    font-size: 3vw;
+    font-weight: bold;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
-
 
 /*-----------------------------------------------------*/
-/*Marquee*/
+/*Marquee Styling*/
 #marquee {
     height: 10vw;
     background-color: black;
+    border-top: 5px solid #20a4a2;
+    border-bottom: 5px solid #20a4a2;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -228,4 +248,45 @@ hr {
         transform: translateX(-50%);
     }
 }
-/* -- -- -- -- */
+/*-----------------------------------------------------*/
+
+#projectsTextContainer {
+    width: 38vw;
+}
+
+#projectsTextContainer hr {
+    width: 22vw;
+    float: left;
+}
+
+
+
+
+
+/* ------------ UNUSED CODE DUMP ------------ */
+.fancy {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        teal,
+        rgb(202, 35, 218),
+        teal
+    );
+    background-size: 200%;
+    background-clip: auto; /*Unnecessary but gets rid of yellow squiggly line*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+@keyframes background-pan {
+    from {
+        background-position: -200% center;
+    }
+
+    to {
+        background-position: 0% center;
+    }
+}
+
+/*------------------------------------------*/
