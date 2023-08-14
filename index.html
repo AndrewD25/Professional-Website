@@ -1,137 +1,58 @@
 <!--
 Andrew Deal
 Professional Website
-First submission due 8/4/23
+Presentation on 8/15/23
 -->
 
 <!DOCTYPE html>
 <html>
     <head>
-        <!--Set up title and metadata-->
-        <title>Andrew Deal</title>
+        <title>Hi, I'm Andrew Deal </title>
         <meta charset="UTF-8">
-        <meta name="description" content="Hi, I'm Andrew, a high school senior & EVIT Software/App Design student passionate about programming. I'm skilled (and certified) in Python, HTML, CSS, and JavaScript.">
+        <!--Might have to rewrite description to match/match less with the h3 synopsis of me-->
+        <meta name="description" content="Hi, I'm Andrew, a high school senior & EVIT Software and App Design student passionate about programming. I'm skilled (and certified) in Python, HTML, CSS, and JavaScript.">
         <meta name="author" content="Andrew Deal">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--Link stylesheet and favicon-->
-        <link rel="stylesheet" href="styles.css">
-        <link rel="icon" type="image/x-icon" href="favicon1.ico">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <!--Horizontal list at top of page for navigation links-->
-        <ul id="linklist">
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#resume">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="main">
+            <!--<h2>Hi, my name is</h2>
+            <h1>Andrew Deal</h1>
+            <h3>I'm an aspiring software engineer...</h3>-->
 
-        <!--Main content container-->
-        <div id="main">
-            <!--Intro (name and picture, etc) screen-->
-            <div id="titlePage">  
-                <div>
-                    <div id="titlePageText">
-                        <h1 id="nameTitle">Andrew Deal</h1>
-                        <h3 id="subtitle">Aspiring Software Engineer</h3>
-                        <hr>
-                        <h4>Scroll to see more!</h4>
-                    </div>
-                    <!--Replace image later-->
-                    <img src="https://static6.depositphotos.com/1144472/639/i/950/depositphotos_6390157-stock-photo-businessman-isolated-on-white-background.jpg" alt="Picture of me" id="me">
+            <img id="testImg" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg">
+            <input style="float: right; margin-right: 10px; margin-top: 10px;" type="button" onclick="shrinkHome()">
+            <input style="float: right; margin-right: 10px; margin-top: 10px;" type="button" onclick="growHome()">
+
+            <div id="folderContainer">
+                <div class="folderBox">
+                    <img src="folder.png" alt="title folder" class="folder" id="home">
+                    <p>Home</p>
                 </div>
-
-                <img>
-
+                <div class="folderBox">
+                    <img src="folder.png" alt="about me folder" class="folder" id="aboutMe">
+                    <p>About Me</p>
+                </div>
+                <div class="folderBox">
+                    <img src="folder.png" alt="projects folder" class="folder" id="projects">
+                    <p>Projects</p>
+                </div>
+                <div class="folderBox">
+                    <img src="folder.png" alt="resume folder" class="folder" id="resume">
+                    <p>Resume</p>
+                </div>
+                <div class="folderBox">
+                    <img src="folder.png" alt="contact information folder" class="folder" id="contact">
+                    <p>Contact Info</p>
+                </div>    
             </div>
             
-            <!--About me screen-->
-            <div id="about" class="flexSection rightAlign">
-                <img> <!--This will be some sort of image or collage that represents me-->
-                <div id="aboutMeTextContainer">
-                    <h2>About Me</h2>
-                    <hr>
-                    <p> <!--This is version 1 of my about me bio. May need to be updated if I rewrite it better-->
-                            I am an aspiring software engineer with a love of coding, interest in graphic design, and a passion for learning. I was born and raised in Arizona, 
-                        where I&apos;ve lived for 17 years. Currently a senior in high school, I am also enrolled in EVIT&apos;s Software and App Design program. 
-                        Here, I'm diving deep into the realm of programming, honing my skills and harnessing my creativity. I enjoy learning about all facets of the industry, but my current focus is web development.
-                    </p>
-                    <br>
-                    <p>
-                            Outside of work, I am a dedicated collector of Lego, action figures, and comic books. I love to read many types of books, but science fiction is my favorite. 
-                        When I&apos;m not reading, I enjoy playing (and sometimes creating) games on my PC. My hobbies have helped motivate some of my personal projects, such as the book inventory 
-                        site I am currently building, Read Rover. 
-                    </p>
-                </div>
-            </div>
-
-            <!--Core Values-->
-            <span id="coreValuesTab">
-                <p>My Core Values</p>
-            </span>
-            <span> <!--Might want to delete the span later, if I can figure out how to override the cascading styling-->
-                <div id="marquee">
-                    <div class="sliding-text-container">
-                        <div class="sliding-text">
-                            <h5>Growth</h5><h5>-</h5>
-                            <h5>Equality</h5><h5>-</h5>
-                            <h5>Loyalty</h5><h5>-</h5>
-                        </div>
-                    
-                        <div class="sliding-text">
-                            <h5>Growth</h5><h5>-</h5>
-                            <h5>Equality</h5><h5>-</h5>
-                            <h5>Loyalty</h5><h5>-</h5>
-                        </div>
-                    </div>
-                </div>
-            </span>
-
-            <!--Experience screen-->
-            <div id="projects" class="flexSection leftAlign">
-                <div id="projectsTextContainer">
-                    <h2>Projects</h2>
-                    <hr>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Mattis pellentesque id nibh tortor id aliquet lectus proin nibh. 
-                        Sed ullamcorper morbi tincidunt ornare massa. In metus vulputate eu scelerisque felis. Sollicitudin tempor id eu nisl nunc mi ipsum. 
-                    </p>
-                </div>
-            </div>
-
-            <!--Resume screen-->
-            <div id="resume" class="rightAlign">
-                <h2>Resume</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Mattis pellentesque id nibh tortor id aliquet lectus proin nibh. 
-                    Sed ullamcorper morbi tincidunt ornare massa. In metus vulputate eu scelerisque felis. Sollicitudin tempor id eu nisl nunc mi ipsum. 
-                    Tristique senectus et netus et malesuada fames ac turpis egestas. Felis eget velit aliquet sagittis id consectetur. 
-                    Erat imperdiet sed euismod nisi porta lorem mollis. Fringilla urna porttitor rhoncus dolor purus. 
-                    Oio eu feugiat pretium nibh ipsum consequat nisl vel pretium. Vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra. 
-                    Nisl condimentum id venenatis a condimentum vitae sapien pellentesque.
-                </p>
-            </div>
-
-            <!--Contact and social media info screen-->
-            <div id="contact" class="leftAlign">
-                <h2>Contact</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Proin sagittis nisl rhoncus mattis rhoncus urna neque viverra justo. Mattis pellentesque id nibh tortor id aliquet lectus proin nibh. 
-                    Sed ullamcorper morbi tincidunt ornare massa. In metus vulputate eu scelerisque felis. Sollicitudin tempor id eu nisl nunc mi ipsum. 
-                    Tristique senectus et netus et malesuada fames ac turpis egestas. Felis eget velit aliquet sagittis id consectetur. 
-                    Erat imperdiet sed euismod nisi porta lorem mollis. Fringilla urna porttitor rhoncus dolor purus. 
-                    Oio eu feugiat pretium nibh ipsum consequat nisl vel pretium. Vitae purus faucibus ornare suspendisse sed nisi lacus sed viverra. 
-                    Nisl condimentum id venenatis a condimentum vitae sapien pellentesque.
-                </p>
-            </div>
-
         </div>
+
+        <div id="roundedDiv"> <!--Curve at bottom of page--></div>
         
-    <!--Link JavaScript file-->
-    <script src="script.js"></script>
-    </body>
-</html>
+        <script src="script.js"></script>
+        </body>
+        </html>

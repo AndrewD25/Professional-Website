@@ -1,0 +1,95 @@
+/*
+Andrew Deal
+Professional Website
+Presentation on 8/15/23
+*/
+
+body {
+    background-color: #ffffff;
+    margin: 0;
+    /*delete later*/ height: 99vh;
+    overflow: hidden;
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+/*EXAMPLE OF WORKING ANIMATION*/
+#testImg {
+    width: 160px;
+    height: 100px;
+    position: fixed;
+}
+
+@keyframes shrinkAndMove {
+    from {
+        top: 0px;
+        transform: scale(1);
+    }
+    to {
+        top: 520px;
+        transform: scale(0); /*Fix x translate later*/
+    }
+}
+
+@keyframes growAndMove {
+    from {
+        top: 520px;
+        transform: scale(0); /*Fix x translate later*/ 
+    }
+    to {
+        top: 0px;
+        transform: scale(1);
+    }
+}
+/*-----------------------*/
+
+#folderContainer {
+    position: fixed;
+    left: 50%; /*Center*/
+    transform: translateX(-50%);
+    bottom: 0;
+    margin-bottom: 10px;
+    width: clamp(375px, 100%, 1000px);
+    display: flex;
+    justify-content: space-around;
+    z-index: 999;
+}
+
+.folder {
+    width: 50px;
+    height: 50px;
+}
+
+.folderBox {
+    text-align: center;
+    padding: 2px 7px 2px 7px;
+}
+
+#folderContainer p {
+    margin-block: 0;
+    font-size: 1rem;
+}
+
+#roundedDiv {
+    z-index: -100000000; /*Move to back*/
+    width: 100%;
+    height: 200px;
+    background: #0b83e6;
+    border-radius: 50px; /*Round corners*/
+    position: fixed;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -45%); /*Change second value to move up/down*/
+    display: flex;
+    justify-content: space-around;
+}
