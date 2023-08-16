@@ -4,50 +4,130 @@ Professional Website
 Presentation on 8/15/23
 */
 
+:root { 
+    --myBlue: #0b83e6;
+}
+
 body {
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
+
+    /*Temporary backgound. Make sure to credit if image is used*/
+    background: url("https://img.freepik.com/premium-vector/abstract-seamless-pattern-background-with-artistic-style_7505-1600.jpg?w=1380");
+
     margin: 0;
-    /*delete later*/ height: 99vh;
+    /*delete later?*/ height: 99vh;
     overflow: hidden;
 }
 
-h1 {
+h1, h2, h3 {
     margin: 0;
 }
 
-h2 {
-    margin: 0;
-}
-
-h3 {
-    margin: 0;
-}
-
-/*EXAMPLE OF WORKING ANIMATION*/
-#testImg {
-    width: 160px;
-    height: 100px;
+#greeting { 
+    /*Calculate a position*/
     position: fixed;
+    top: 17vh;
+    left: 5vw;
 }
 
-@keyframes shrinkAndMove {
+#name {
+    font-family: monospace;
+    font-size: 8rem;
+    color: rgba(0, 0, 0, 0); /* Text is fully transparent */
+    -webkit-text-stroke: 2px black; /* Outline width and color */
+    background-clip: auto;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    background-color: var(--myBlue); /*Change text color*/
+
+    /*Calculate a position*/
+    position: fixed;
+    top: 20vh;
+    left: 5vw;
+}
+
+#intro {
+    /*Calculate a position*/
+    position: fixed;
+    top: 40vh;
+    left: 5vw;
+}
+
+/*-------------------------*/
+@keyframes shrinkAndMoveGreeting {
     from {
-        top: 0px;
+        left: 5vw;
+        top: 17vh;
         transform: scale(1);
     }
     to {
-        top: 520px;
-        transform: scale(0); /*Fix x translate later*/
+        left: calc(var(--homeFolderX) - var(--greetingWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--greetingHeight) /2);
+        transform: scale(0);
     }
 }
 
-@keyframes growAndMove {
+@keyframes growAndMoveGreeting {
     from {
-        top: 520px;
-        transform: scale(0); /*Fix x translate later*/ 
+        left: calc(var(--homeFolderX) - var(--greetingWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--greetingHeight) / 2);
+        transform: scale(0);
     }
     to {
-        top: 0px;
+        left: 5vw;
+        top: 17vh;
+        transform: scale(1);
+    }
+}
+
+@keyframes shrinkAndMoveName {
+    from {
+        top: 20vh;
+        left: 5vw;
+        transform: scale(1);
+    }
+    to {
+        left: calc(var(--homeFolderX) - var(--nameWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--nameHeight) / 2);
+        transform: scale(0);
+    }
+}
+
+@keyframes growAndMoveName {
+    from {
+        left: calc(var(--homeFolderX) - var(--nameWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--nameHeight) / 2);
+        transform: scale(0);
+    }
+    to {
+        top: 20vh;
+        left: 5vw;
+        transform: scale(1);
+    }
+}
+
+@keyframes shrinkAndMoveIntro {
+    from {
+        top: 40vh;
+        left: 5vw;
+        transform: scale(1);
+    }
+    to {
+        left: calc(var(--homeFolderX) - var(--introWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--introHeight) / 2);
+        transform: scale(0);
+    }
+}
+
+@keyframes growAndMoveIntro {
+    from {
+        left: calc(var(--homeFolderX) - var(--introWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--introHeight) / 2);
+        transform: scale(0);
+    }
+    to {
+        top: 40vh;
+        left: 5vw;
         transform: scale(1);
     }
 }
@@ -84,7 +164,7 @@ h3 {
     z-index: -100000000; /*Move to back*/
     width: 100%;
     height: 200px;
-    background: #0b83e6;
+    background: var(--myBlue);
     border-radius: 50px; /*Round corners*/
     position: fixed;
     left: 50%;
