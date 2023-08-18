@@ -15,10 +15,10 @@ Presentation on 8/15/23
     --nameLeft: 5vw;
     --introTop: 40vh;
     --introLeft: 5vw;
-    --aboutMeTitleTop: 0vh;
-    --aboutMeTitleLeft: 0vw;
-    --aboutMeParagraphTop: 0vh;
-    --aboutMeParagraphLeft: 0vw;
+    --aboutMeTitleTop: 10vh;
+    --aboutMeTitleLeft: 2vw;
+    --aboutMeParagraphTop: 22.5vh;
+    --aboutMeParagraphLeft: 2vw;
 }
 
 body {
@@ -61,6 +61,8 @@ h1, h2, h3 {
 }
 
 #greeting { 
+    font-size: 1.5rem;
+
     /*Set position*/
     position: fixed;
     top: var(--greetingTop);
@@ -86,6 +88,8 @@ h1, h2, h3 {
 }
 
 #intro {
+    font-size: 1.5rem;
+
     /*Set position*/
     position: fixed;
     top: var(--introTop);
@@ -94,6 +98,10 @@ h1, h2, h3 {
 }
 
 #aboutMeTitle {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    color: var(--myBlue);
+    font-size: 6rem;
     white-space: nowrap; 
 
     /*set position*/
@@ -104,7 +112,9 @@ h1, h2, h3 {
 }
 
 #aboutMeParagraph {
-    width: 60%;
+    text-indent: 3.5rem;
+    font-size: 1.5rem;
+    width: 50%;
     
     /*set position*/
     position: fixed;
@@ -270,6 +280,7 @@ h1, h2, h3 {
 #folderContainer p {
     margin-block: 0;
     font-size: 1rem;
+    pointer-events: none;
 }
 
 #roundedDiv {
