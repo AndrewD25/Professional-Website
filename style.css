@@ -6,6 +6,19 @@ Presentation on 8/15/23
 
 :root { 
     --myBlue: #0b83e6;
+
+    /*Define left and right values for each element here*/
+    /*This makes changing them easier because it applies to original position + animations*/
+    --greetingTop: 17vh;
+    --greetingLeft: 5vw;
+    --nameTop: 20vh;
+    --nameLeft: 5vw;
+    --introTop: 40vh;
+    --introLeft: 5vw;
+    --aboutMeTitleTop: 0vh;
+    --aboutMeTitleLeft: 0vw;
+    --aboutMeParagraphTop: 0vh;
+    --aboutMeParagraphLeft: 0vw;
 }
 
 body {
@@ -16,18 +29,43 @@ body {
 
     margin: 0;
     /*delete later?*/ height: 99vh;
+
+    /*Overflow handling*/
     overflow: hidden;
 }
+
+/*Pages*/
+#homePage {
+    display: auto;
+}
+
+#aboutMePage {
+    display: auto;
+}
+
+#projectsPage {
+    display: auto;
+}
+
+#resumePage {
+    display: auto;
+}
+
+#contactPage {
+    display: auto;
+}
+/*-----------------------*/
 
 h1, h2, h3 {
     margin: 0;
 }
 
 #greeting { 
-    /*Calculate a position*/
+    /*Set position*/
     position: fixed;
-    top: 17vh;
-    left: 5vw;
+    top: var(--greetingTop);
+    left: var(--greetingLeft);
+    white-space: nowrap; 
 }
 
 #name {
@@ -39,95 +77,169 @@ h1, h2, h3 {
     -webkit-background-clip: text;
     font-weight: bold;
     background-color: var(--myBlue); /*Change text color*/
+    white-space: nowrap; 
 
-    /*Calculate a position*/
+    /*Set position*/
     position: fixed;
-    top: 20vh;
-    left: 5vw;
+    top: var(--nameTop);
+    left: var(--nameLeft);
 }
 
 #intro {
-    /*Calculate a position*/
+    /*Set position*/
     position: fixed;
-    top: 40vh;
-    left: 5vw;
+    top: var(--introTop);
+    left: var(--introLeft);
+    white-space: nowrap; 
+}
+
+#aboutMeTitle {
+    white-space: nowrap; 
+
+    /*set position*/
+    position: fixed;
+    top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight) / 2);
+    left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth) / 2);
+    transform: scale(0);
+}
+
+#aboutMeParagraph {
+    width: 60%;
+    
+    /*set position*/
+    position: fixed;
+    top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight) / 2);
+    left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth) / 2);
+    transform: scale(0);
 }
 
 /*-------------------------*/
 @keyframes shrinkAndMoveGreeting {
     from {
-        left: 5vw;
-        top: 17vh;
+        top: var(--greetingTop);
+        left: var(--greetingLeft);
         transform: scale(1);
     }
     to {
-        left: calc(var(--homeFolderX) - var(--greetingWidth) / 2);
         top: calc(var(--homeFolderY) - var(--greetingHeight) /2);
+        left: calc(var(--homeFolderX) - var(--greetingWidth) / 2);
         transform: scale(0);
     }
 }
 
 @keyframes growAndMoveGreeting {
     from {
-        left: calc(var(--homeFolderX) - var(--greetingWidth) / 2);
         top: calc(var(--homeFolderY) - var(--greetingHeight) / 2);
+        left: calc(var(--homeFolderX) - var(--greetingWidth) / 2);
         transform: scale(0);
     }
     to {
-        left: 5vw;
-        top: 17vh;
+        top: var(--greetingTop);
+        left: var(--greetingLeft);
         transform: scale(1);
     }
 }
 
 @keyframes shrinkAndMoveName {
     from {
-        top: 20vh;
-        left: 5vw;
+        top: var(--nameTop);
+        left: var(--nameLeft);
         transform: scale(1);
     }
     to {
-        left: calc(var(--homeFolderX) - var(--nameWidth) / 2);
-        top: calc(var(--homeFolderY) - var(--nameHeight) / 2);
+        top: calc(var(--homeFolderY) - var(--myNameHeight) / 2);
+        left: calc(var(--homeFolderX) - var(--myNameWidth) / 2);
         transform: scale(0);
     }
 }
 
 @keyframes growAndMoveName {
     from {
-        left: calc(var(--homeFolderX) - var(--nameWidth) / 2);
-        top: calc(var(--homeFolderY) - var(--nameHeight) / 2);
+        top: calc(var(--homeFolderY) - var(--myNameHeight) / 2);
+        left: calc(var(--homeFolderX) - var(--myNameWidth) / 2);
         transform: scale(0);
     }
     to {
-        top: 20vh;
-        left: 5vw;
+        top: var(--nameTop);
+        left: var(--nameLeft);
         transform: scale(1);
     }
 }
 
 @keyframes shrinkAndMoveIntro {
     from {
-        top: 40vh;
-        left: 5vw;
+        top: var(--introTop);
+        left: var(--introLeft);
         transform: scale(1);
     }
     to {
-        left: calc(var(--homeFolderX) - var(--introWidth) / 2);
         top: calc(var(--homeFolderY) - var(--introHeight) / 2);
+        left: calc(var(--homeFolderX) - var(--introWidth) / 2);
         transform: scale(0);
     }
 }
 
 @keyframes growAndMoveIntro {
     from {
-        left: calc(var(--homeFolderX) - var(--introWidth) / 2);
         top: calc(var(--homeFolderY) - var(--introHeight) / 2);
+        left: calc(var(--homeFolderX) - var(--introWidth) / 2);
         transform: scale(0);
     }
     to {
-        top: 40vh;
-        left: 5vw;
+        top: var(--introTop);
+        left: var(--introLeft);
+        transform: scale(1);
+    }
+}
+
+@keyframes shrinkAndMoveAboutMeTitle {
+    from {
+        top: var(--aboutMeTitleTop);
+        left: var(--aboutMeTitleLeft);
+        transform: scale(1);
+    }
+    to {
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight) / 2);
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth) / 2);
+        transform: scale(0);
+    }
+}
+
+@keyframes growAndMoveAboutMeTitle {
+    from {
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight) / 2);
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth) / 2);
+        transform: scale(0);
+    }
+    to {
+        top: var(--aboutMeTitleTop);
+        left: var(--aboutMeTitleLeft);
+        transform: scale(1);
+    }
+}
+
+@keyframes shrinkAndMoveAboutMeParagraph {
+    from {
+        top: var(--aboutMeParagraphTop);
+        left: var(--aboutMeParagraphLeft);
+        transform: scale(1);
+    }
+    to {
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight) / 2);
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth) / 2);
+        transform: scale(0);
+    }
+}
+
+@keyframes growAndMoveAboutMeParagraph {
+    from {
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight) / 2);
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth) / 2);
+        transform: scale(0);
+    }
+    to {
+        top: var(--aboutMeParagraphTop);
+        left: var(--aboutMeParagraphLeft);
         transform: scale(1);
     }
 }

@@ -18,39 +18,65 @@ Presentation on 8/15/23
     </head>
     <body>
         <div class="main">
-            <h2 id="greeting">Hi, my name is...</h2>
-            <h1 id="name">Andrew Deal</h1>
-            <h3 id="intro">I'm an aspiring software engineer...</h3>
 
-            <button style="float: right; margin-right: 10px; margin-top: 10px;" onclick="shrinkHome()">Shrink</button>
-            <button style="float: right; margin-right: 10px; margin-top: 10px;" onclick="growHome()">Grow</button>
+            <!--Pages-->
+            <div id="homePage">
+                <h2 id="greeting">Hi, my name is...</h2>
+                <h1 id="name">Andrew Deal</h1>
+                <h3 id="intro">I'm an aspiring software engineer...</h3>
+                <!--Add img here?-->
+            </div>
 
+            <div id="aboutMePage">
+                <h1 id="aboutMeTitle">About Me</h1>
+                <p id="aboutMeParagraph"> <!--This is version 1 of my about me bio. May need to be updated if I rewrite it better-->
+                        I am an aspiring software engineer with a love of coding, interest in graphic design, and a passion for learning. I was born and raised in Arizona, 
+                    where I&apos;ve lived for 17 years. Currently a senior in high school, I am also enrolled in EVIT&apos;s Software and App Design program. 
+                    Here, I'm diving deep into the realm of programming, honing my skills and harnessing my creativity. I enjoy learning about all facets of the industry, but my current focus is web development.
+                </p>
+                <!--Add img here?-->
+            </div>
+
+            <div id="projectsPage">
+
+            </div>
+            
+            <div id="resumePage">
+
+            </div>
+
+            <div id="contactPage">
+
+            </div>
+
+            <!--Folders-->
             <div id="folderContainer">
                 <div class="folderBox">
-                    <img src="folder.png" alt="title folder" class="folder" id="home">
+                    <img src="folder.png" alt="title folder" class="folder" id="homeFolder">
                     <p>Home</p>
                 </div>
                 <div class="folderBox">
-                    <img src="folder.png" alt="about me folder" class="folder" id="aboutMe">
+                    <img src="folder.png" alt="about me folder" class="folder" id="aboutMeFolder">
                     <p>About Me</p>
                 </div>
                 <div class="folderBox">
-                    <img src="folder.png" alt="projects folder" class="folder" id="projects">
+                    <img src="folder.png" alt="projects folder" class="folder" id="projectsFolder">
                     <p>Projects</p>
                 </div>
                 <div class="folderBox">
-                    <img src="folder.png" alt="resume folder" class="folder" id="resume">
+                    <img src="folder.png" alt="resume folder" class="folder" id="resumeFolder">
                     <p>Resume</p>
                 </div>
                 <div class="folderBox">
-                    <img src="folder.png" alt="contact information folder" class="folder" id="contact">
+                    <img src="folder.png" alt="contact information folder" class="folder" id="contactFolder">
                     <p>Contact Info</p>
                 </div>    
             </div>
-            
+
         </div>
 
-        <div id="roundedDiv"> <!--Curve at bottom of page--></div>
+        <!--Curve at bottom of page-->
+        <div id="roundedDiv"></div>
         
         <script src="script.js"></script>
     </body>
