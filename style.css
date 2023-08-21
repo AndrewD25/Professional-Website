@@ -5,27 +5,36 @@ Presentation on 8/15/23
 */
 
 :root { 
-    --myBlue: #0b83e6;
-
+    --myBlue: #0ec0e4;
+    
     /*Define left and right values for each element here*/
     /*This makes changing them easier because it applies to original position + animations*/
-    --greetingTop: 17vh;
+    --greetingTop: 22vh;
     --greetingLeft: 5vw;
-    --nameTop: 20vh;
+    --nameTop: 30vh;
     --nameLeft: 5vw;
-    --introTop: 40vh;
+    --introTop: 50vh;
     --introLeft: 5vw;
+    --instructionsTop: 60vh;
+    --instructionsLeft: 5vw;
+    
     --aboutMeTitleTop: 10vh;
-    --aboutMeTitleLeft: 2vw;
+    --aboutMeTitleLeft: 5vw;
     --aboutMeParagraphTop: 22.5vh;
-    --aboutMeParagraphLeft: 2vw;
+    --aboutMeParagraphLeft: 5vw; 
+
+    --projectsTitleTop: 10vh;
+    --projectsTitleLeft: 5vw;
+    --projectsGalleryTop: 30vh;
+    --projectsGalleryLeft: 0px;
 }
 
-body {
-    /*background-color: #ffffff;*/
 
-    /*Temporary backgound. Make sure to credit if image is used*/
-    background: url("https://img.freepik.com/premium-vector/abstract-seamless-pattern-background-with-artistic-style_7505-1600.jpg?w=1380");
+body {
+    background-color: #EEE;
+
+    /*Temporary backgound. Make sure to credit if image is used
+    background: url("https://img.freepik.com/premium-vector/abstract-seamless-pattern-background-with-artistic-style_7505-1600.jpg?w=1380");*/
 
     margin: 0;
     /*delete later?*/ height: 99vh;
@@ -34,34 +43,12 @@ body {
     overflow: hidden;
 }
 
-/*Pages*/
-#homePage {
-    display: auto;
-}
-
-#aboutMePage {
-    display: auto;
-}
-
-#projectsPage {
-    display: auto;
-}
-
-#resumePage {
-    display: auto;
-}
-
-#contactPage {
-    display: auto;
-}
-/*-----------------------*/
-
 h1, h2, h3 {
     margin: 0;
 }
 
 #greeting { 
-    font-size: 1.5rem;
+    font-size: 4rem;
 
     /*Set position*/
     position: fixed;
@@ -71,7 +58,7 @@ h1, h2, h3 {
 }
 
 #name {
-    font-family: monospace;
+    font-family: monospace serif;
     font-size: 8rem;
     color: rgba(0, 0, 0, 0); /* Text is fully transparent */
     -webkit-text-stroke: 2px black; /* Outline width and color */
@@ -87,8 +74,49 @@ h1, h2, h3 {
     left: var(--nameLeft);
 }
 
+@media only screen and (max-width: 400px) {
+    #name {
+        color: black;
+        font-size: 3rem;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+#name:hover {
+    animation: background-pan 2.5s linear infinite;
+    background: linear-gradient(
+        to right,
+        var(--myBlue),
+        var(--myBlue),
+        var(--myBlue),
+        var(--myBlue),
+        rgb(226, 87, 145),
+        rgb(226, 87, 145),
+        var(--myBlue)
+    );
+    background-size: 200%;
+    background-clip: auto; /*Unnecessary but gets rid of yellow squiggly line*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+@keyframes background-pan {
+    from {
+        background-position: -200% center;
+    }
+
+    to {
+        background-position: 0% center;
+    }
+}
+
 #intro {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--myBlue);
 
     /*Set position*/
     position: fixed;
@@ -97,10 +125,23 @@ h1, h2, h3 {
     white-space: nowrap; 
 }
 
+#instructions {
+    font-size: 2rem;
+    white-space: nowrap; 
+
+    /*set position*/
+    position: fixed;
+    top: var(--instructionsTop);
+    left: var(--instructionsLeft);
+}
+
 #aboutMeTitle {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-style: oblique;
-    color: var(--myBlue);
+    color: rgba(0, 0, 0, 0); /* Text is fully transparent */
+    -webkit-text-stroke: 2px black; /* Outline width and color */
+    background-clip: auto;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    background-color: var(--myBlue); /*Change text color*/
     font-size: 6rem;
     white-space: nowrap; 
 
@@ -123,6 +164,60 @@ h1, h2, h3 {
     transform: scale(0);
 }
 
+#projectsTitle {
+    color: rgba(0, 0, 0, 0); /* Text is fully transparent */
+    -webkit-text-stroke: 2px black; /* Outline width and color */
+    background-clip: auto;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    background-color: var(--myBlue); /*Change text color*/
+    font-size: 6rem;
+    white-space: nowrap; 
+
+    /*set position*/
+    position: fixed;
+    top: calc(var(--projectsFolderY) - var(--projectsTitleHeight) / 2);
+    left: calc(var(--projectsFolderX) - var(--projectsTitleWidth) / 2);
+    transform: scale(0);
+}
+
+#projectsGallery {
+    width: 150vw; 
+    background-color: rgb(112, 112, 112);
+    border-block: 5px solid var(--myBlue);
+    height: 50vh;
+    display: flex;
+    align-items: center;
+
+    /*set position*/
+    position: fixed;
+    top: calc(var(--projectsFolderY) - var(--projectsTitleHeight) / 2);
+    left: calc(var(--projectsFolderX) - var(--projectsTitleWidth) / 2);
+    transform: scale(0);
+}
+
+div.gallery {
+    border: 1px solid #333;
+    float: left;
+    width: 45vw;
+    margin: 10px;
+  }
+  
+div.gallery:hover {
+    border: 1px solid #000;
+}
+  
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+  
+div.desc {
+    padding: 15px;
+    text-align: center;
+    background-color: #DDD;
+}
+
 /*-------------------------*/
 @keyframes shrinkAndMoveGreeting {
     from {
@@ -131,16 +226,16 @@ h1, h2, h3 {
         transform: scale(1);
     }
     to {
-        top: calc(var(--homeFolderY) - var(--greetingHeight) /2);
-        left: calc(var(--homeFolderX) - var(--greetingWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--greetingHeight));
+        left: calc(var(--homeFolderX) - var(--greetingWidth));
         transform: scale(0);
     }
 }
 
 @keyframes growAndMoveGreeting {
     from {
-        top: calc(var(--homeFolderY) - var(--greetingHeight) / 2);
-        left: calc(var(--homeFolderX) - var(--greetingWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--greetingHeight));
+        left: calc(var(--homeFolderX) - var(--greetingWidth));
         transform: scale(0);
     }
     to {
@@ -157,16 +252,16 @@ h1, h2, h3 {
         transform: scale(1);
     }
     to {
-        top: calc(var(--homeFolderY) - var(--myNameHeight) / 2);
-        left: calc(var(--homeFolderX) - var(--myNameWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--myNameHeight));
+        left: calc(var(--homeFolderX) - var(--myNameWidth));
         transform: scale(0);
     }
 }
 
 @keyframes growAndMoveName {
     from {
-        top: calc(var(--homeFolderY) - var(--myNameHeight) / 2);
-        left: calc(var(--homeFolderX) - var(--myNameWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--myNameHeight));
+        left: calc(var(--homeFolderX) - var(--myNameWidth)); 
         transform: scale(0);
     }
     to {
@@ -183,21 +278,47 @@ h1, h2, h3 {
         transform: scale(1);
     }
     to {
-        top: calc(var(--homeFolderY) - var(--introHeight) / 2);
-        left: calc(var(--homeFolderX) - var(--introWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--introHeight));
+        left: calc(var(--homeFolderX) - var(--introWidth));
         transform: scale(0);
     }
 }
 
 @keyframes growAndMoveIntro {
     from {
-        top: calc(var(--homeFolderY) - var(--introHeight) / 2);
-        left: calc(var(--homeFolderX) - var(--introWidth) / 2);
+        top: calc(var(--homeFolderY) - var(--introHeight));
+        left: calc(var(--homeFolderX) - var(--introWidth));
         transform: scale(0);
     }
     to {
         top: var(--introTop);
         left: var(--introLeft);
+        transform: scale(1);
+    }
+}
+
+@keyframes shrinkAndMoveInstructions {
+    from {
+        top: var(--instructionsTop);
+        left: var(--instructionsLeft);
+        transform: scale(1);
+    }
+    to {
+        top: calc(var(--homeFolderY) - var(--instructionsHeight));
+        left: calc(var(--homeFolderX) - var(--instructionsWidth));
+        transform: scale(0);
+    }
+}
+
+@keyframes growAndMoveInstructions {
+    from {
+        top: calc(var(--homeFolderY) - var(--instructionsHeight));
+        left: calc(var(--homeFolderX) - var(--instructionsWidth));
+        transform: scale(0);
+    }
+    to {
+        top: var(--instructionsTop);
+        left: var(--instructionsLeft);
         transform: scale(1);
     }
 }
@@ -209,16 +330,16 @@ h1, h2, h3 {
         transform: scale(1);
     }
     to {
-        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight) / 2);
-        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth) / 2);
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight));
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth));
         transform: scale(0);
     }
 }
 
 @keyframes growAndMoveAboutMeTitle {
     from {
-        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight) / 2);
-        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth) / 2);
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight));
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth));
         transform: scale(0);
     }
     to {
@@ -235,16 +356,16 @@ h1, h2, h3 {
         transform: scale(1);
     }
     to {
-        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight) / 2);
-        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth) / 2);
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight));
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth));
         transform: scale(0);
     }
 }
 
 @keyframes growAndMoveAboutMeParagraph {
     from {
-        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight) / 2);
-        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth) / 2);
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight));
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth));
         transform: scale(0);
     }
     to {
@@ -253,6 +374,59 @@ h1, h2, h3 {
         transform: scale(1);
     }
 }
+
+@keyframes shrinkAndMoveProjectsTitle {
+    from {
+        top: var(--projectsTitleTop);
+        left: var(--projectsTitleLeft);
+        transform: scale(1);
+    }
+    to {
+        top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
+        transform: scale(0);
+    }
+}
+
+@keyframes growAndMoveProjectsTitle {
+    from {
+        top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
+        transform: scale(0);
+    }
+    to {
+        top: var(--projectsTitleTop);
+        left: var(--projectsTitleLeft);
+        transform: scale(1);
+    }
+}
+
+@keyframes shrinkAndMoveProjectsGallery {
+    from {
+        top: var(--projectsGalleryTop);
+        left: var(--projectsGalleryLeft);
+        transform: scale(1);
+    }
+    to {
+        top: calc(var(--projectsFolderY) - var(--projectsGalleryHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsGalleryWidth));
+        transform: scale(0);
+    }
+}
+
+@keyframes growAndMoveProjectsGallery {
+    from {
+        top: calc(var(--projectsFolderY) - var(--projectsGalleryHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsGalleryWidth));
+        transform: scale(0);
+    }
+    to {
+        top: var(--projectsGalleryTop);
+        left: var(--projectsGalleryLeft);
+        transform: scale(1);
+    }
+}
+
 /*-----------------------*/
 
 #folderContainer {

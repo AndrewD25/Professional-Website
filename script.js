@@ -14,28 +14,42 @@ const r = document.querySelector(':root'); //Get CSS root
 const greeting = document.getElementById("greeting"); //Each element is found and saved in a js variable
 const myName = document.getElementById("name");
 const intro = document.getElementById("intro");
+const instructions = document.getElementById("instructions")
 
 //About me page
 const aboutMeTitle = document.getElementById("aboutMeTitle");
 const aboutMeParagraph = document.getElementById("aboutMeParagraph");
 
+//Projects page
+const projectsTitle = document.getElementById("projectsTitle");
+const projectsGallery = document.getElementById("projectsGallery");
+
 // Get Element Coordinates //
 function getCoords() {
 
-    r.style.setProperty('--greetingWidth', `${greeting.getBoundingClientRect().width}px`); //Width is saved in css variable
-    r.style.setProperty('--greetingHeight', `${greeting.getBoundingClientRect().height}px`); //height is saved in css variable
+    r.style.setProperty('--greetingWidth', `${greeting.getBoundingClientRect().width / 2}px`); //Width is saved in css variable
+    r.style.setProperty('--greetingHeight', `${greeting.getBoundingClientRect().height / 2}px`); //height is saved in css variable
 
-    r.style.setProperty('--myNameWidth', `${myName.getBoundingClientRect().width}px`);
-    r.style.setProperty('--myNameHeight', `${myName.getBoundingClientRect().height}px`);
+    r.style.setProperty('--myNameWidth', `${myName.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--myNameHeight', `${myName.getBoundingClientRect().height / 2}px`);
 
-    r.style.setProperty('--introWidth', `${intro.getBoundingClientRect().width}px`);
-    r.style.setProperty('--introHeight', `${intro.getBoundingClientRect().height}px`);
+    r.style.setProperty('--introWidth', `${intro.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--introHeight', `${intro.getBoundingClientRect().height / 2}px`);
+
+    r.style.setProperty('--instructionsWidth', `${intro.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--instructionsHeight', `${intro.getBoundingClientRect().height / 2}px`);
     
-    r.style.setProperty('--aboutMeTitleWidth', `${aboutMeTitle.getBoundingClientRect().width}px`);
-    r.style.setProperty('--aboutMeTitleHeight', `${aboutMeTitle.getBoundingClientRect().height}px`);
+    r.style.setProperty('--aboutMeTitleWidth', `${aboutMeTitle.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--aboutMeTitleHeight', `${aboutMeTitle.getBoundingClientRect().height / 2}px`);
 
-    r.style.setProperty('--aboutMeParagraphWidth', `${aboutMeParagraph.getBoundingClientRect().width}px`);
-    r.style.setProperty('--aboutMeParagraphHeight', `${aboutMeParagraph.getBoundingClientRect().height}px`);
+    r.style.setProperty('--aboutMeParagraphWidth', `${aboutMeParagraph.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--aboutMeParagraphHeight', `${aboutMeParagraph.getBoundingClientRect().height / 2}px`);
+
+    r.style.setProperty('--projectsTitleWidth', `${projectsTitle.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--projectsTitleHeight', `${projectsTitle.getBoundingClientRect().height / 2}px`);
+
+    r.style.setProperty('--projectsGalleryWidth', `${projectsGallery.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--projectsGalleryHeight', `${projectsGallery.getBoundingClientRect().height / 2}px`);
 }
 getCoords();
 
@@ -76,6 +90,20 @@ function findAboutMeFolder(direction) {
     };
 };
 
+function findProjectsFolder(direction) {
+    //Get box around folder coords
+    let rect = projectsFolder.getBoundingClientRect();
+
+    //Save center x and y to CSS (finding avg x and y)
+    r.style.setProperty('--projectsFolderX', `${(rect.left + rect.right) / 2}px`);
+    r.style.setProperty('--projectsFolderY', `${(rect.top + rect.bottom) / 2}px`);
+
+    //Update element coordinates
+    if (direction === "shrink") {
+        getCoords();
+    };
+};
+
 // Variable to keep track of which folder is currently open //
 let currentFolder = "home";
 
@@ -89,6 +117,7 @@ function shrinkHome() {
     greeting.style.animation = "shrinkAndMoveGreeting 1s forwards"; 
     myName.style.animation = "shrinkAndMoveName 1s forwards"; 
     intro.style.animation = "shrinkAndMoveIntro 1s forwards"; 
+    instructions.style.animation = "shrinkAndMoveInstructions 1s forwards"; 
 }
 
 function shrinkAboutMe() {
@@ -100,9 +129,16 @@ function shrinkAboutMe() {
     aboutMeParagraph.style.animation = "shrinkAndMoveAboutMeParagraph 1s forwards";
 }
 
-function growHome() {
-    console.log("working");
+function shrinkProjects() {
+    //Get projects folder coordinates, then apply the animation for each element
+    findProjectsFolder("shrink");
 
+    //Animations
+    projectsTitle.style.animation = "shrinkAndMoveProjectsTitle 1s forwards"
+    projectsGallery.style.animation = "shrinkAndMoveProjectsGallery 1s forwards"
+}
+
+function growHome() {
     //Shrink whichever folder is open
     switch (currentFolder) {
         case "home": 
@@ -131,6 +167,7 @@ function growHome() {
     greeting.style.animation = "growAndMoveGreeting 1s forwards"; 
     myName.style.animation = "growAndMoveName 1s forwards"; 
     intro.style.animation = "growAndMoveIntro 1s forwards"
+    instructions.style.animation = "growAndMoveInstructions 1s forwards"
 }
 
 function growAboutMe() {
@@ -163,11 +200,41 @@ function growAboutMe() {
     aboutMeParagraph.style.animation = "growAndMoveAboutMeParagraph 1s forwards";
 }
 
+function growProjects() {
+    //Shrink whichever folder is open
+    switch (currentFolder) {
+        case "home": 
+            shrinkHome();
+            break;
+        case "aboutMe":
+            shrinkAboutMe();
+            break;
+        case "projects":
+            return;
+        case "resume":
+            shrinkResume();
+            break;
+        case "contact":
+            shrinkContact();
+            break;
+    };
+
+    //Tell program that home folder is being opened
+    currentFolder = "projects";
+
+    //Get home folder coordinates, then apply the animation for each element    
+    findProjectsFolder("grow");
+
+    //Animations
+    projectsTitle.style.animation = "growAndMoveProjectsTitle 1s forwards"; 
+    projectsGallery.style.animation = "growAndMoveProjectsGallery 1s forwards"; 
+}
+
 
 /// Add ondblclick events to each folder ///
 homeFolder.ondblclick = growHome;
 aboutMeFolder.ondblclick = growAboutMe; //Or the updated grow (any folder) function if I figure out how to do that sooner than later
-//projectsFolder.ondblclick = growProjects;
+projectsFolder.ondblclick = growProjects; //Or the updated grow (any folder) function if I figure out how to do that sooner than later
 //resumeFolder.ondblclick = growResume;
 //contactsFolder.ondlbclick = growContacts;
 
