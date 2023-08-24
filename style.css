@@ -390,7 +390,7 @@ div.desc p {
     border-bottom: 1px solid black;
     resize: vertical;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1rem
+    font-size: 1rem;
 }
 
 #submitContactForm {

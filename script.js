@@ -379,11 +379,13 @@ let isDragging = false;
 let startX = 0;
 
 document.addEventListener('mousedown', (event) => {
-  if (event.button === 0) { // Left mouse button
-    isDragging = true;
-    startX = event.clientX;
-    event.preventDefault(); // Prevents text selection during drag
-  }
+    if (currentFolder === "projects") {
+        if (event.button === 0) { // Left mouse button
+            isDragging = true;
+            startX = event.clientX;
+            event.preventDefault();// Prevents text selection during drag
+        } 
+    }
 });
 
 document.addEventListener('mouseup', () => {
