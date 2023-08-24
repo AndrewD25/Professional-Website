@@ -22,7 +22,7 @@ Presentation on 8/15/23
             <!--Pages-->
             <div id="homePage">
                 <h2 id="greeting">Hi, my name is</h2>
-                <h1 id="name">Andrew Deal</h1>
+                <h1 id="name" class="fancy">Andrew Deal</h1>
                 <h3 id="intro">I'm an aspiring software engineer...</h3>
                 <h3 id="instructions">Double-click on a folder to see more!</h3>
                 <!--Add img here?-->
@@ -35,7 +35,8 @@ Presentation on 8/15/23
                     where I&apos;ve lived for 17 years. Currently a senior in high school, I am also enrolled in EVIT&apos;s Software and App Design program. 
                     Here, I'm diving deep into the realm of programming, honing my skills and harnessing my creativity. I enjoy learning about all facets of the industry, but my current focus is web development.
                 </p>
-                <!--Add img here?-->
+                <!--Replace with me!-->
+                <img id="me" src="https://st.depositphotos.com/1144472/2003/i/950/depositphotos_20030237-stock-photo-cheerful-young-man-over-white.jpg" alt="photo of me">
             </div>
 
             <div id="projectsPage">
@@ -65,11 +66,44 @@ Presentation on 8/15/23
             </div>
             
             <div id="resumePage">
+                <h1 id="resumeTitle">Resume</h1>
 
             </div>
 
             <div id="contactPage">
+                <h1 id="contactTitle">Contact Me</h1>
+                <div id="contactBox">
+                    <div id="contactLeftSide">
+                        <h2>Send Me A Message:</h2>
 
+                        <form>
+                            <input type="text" id="nameInput" name="nameInput" placeholder="Name">
+                            <input type="email" id="emailInput" name="emailInput" placeholder="Email">
+                            <textarea id="messageInput" name="messageInput" placeholder="Type out a message here"></textarea>
+                            <input type="submit" id="submitContactForm" name="submitContactForm">
+                        </form>
+                    </div>
+
+                    <div id="contactRightSide">
+                        <h2>Or Find Me On...</h2>
+
+                        <!--List of contact info + pictures-->
+                        <div id="contactsFlex">
+                            <div id="gmailInfo" class="contactInfoDiv">
+                                <img src="gmail.png">
+                                <p>andrewsdeal@gmail.com</p>
+                            </div>
+                            <div id="githubInfo" class="contactInfoDiv">
+                                <img src="github.png">
+                                <p>AndrewD25</p>
+                            </div>
+                            <div id="linkedinInfo" class="contactInfoDiv">
+                                <img src="linkedin.png">
+                                <p>Andrew Deal</p>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
             </div>
 
             <!--Folders-->

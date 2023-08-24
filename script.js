@@ -19,37 +19,55 @@ const instructions = document.getElementById("instructions")
 //About me page
 const aboutMeTitle = document.getElementById("aboutMeTitle");
 const aboutMeParagraph = document.getElementById("aboutMeParagraph");
+const me = document.getElementById("me");
 
 //Projects page
 const projectsTitle = document.getElementById("projectsTitle");
 const projectsGallery = document.getElementById("projectsGallery");
 
+//Resume page
+const resumeTitle = document.getElementById("resumeTitle");
+
+//Contact page
+const contactTitle = document.getElementById("contactTitle");
+const contactBox = document.getElementById("contactBox");
+
 // Get Element Coordinates //
 function getCoords() {
 
+    //Home
     r.style.setProperty('--greetingWidth', `${greeting.getBoundingClientRect().width / 2}px`); //Width is saved in css variable
     r.style.setProperty('--greetingHeight', `${greeting.getBoundingClientRect().height / 2}px`); //height is saved in css variable
-
     r.style.setProperty('--myNameWidth', `${myName.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--myNameHeight', `${myName.getBoundingClientRect().height / 2}px`);
-
     r.style.setProperty('--introWidth', `${intro.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--introHeight', `${intro.getBoundingClientRect().height / 2}px`);
-
     r.style.setProperty('--instructionsWidth', `${intro.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--instructionsHeight', `${intro.getBoundingClientRect().height / 2}px`);
     
+    //About Me
     r.style.setProperty('--aboutMeTitleWidth', `${aboutMeTitle.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--aboutMeTitleHeight', `${aboutMeTitle.getBoundingClientRect().height / 2}px`);
-
     r.style.setProperty('--aboutMeParagraphWidth', `${aboutMeParagraph.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--aboutMeParagraphHeight', `${aboutMeParagraph.getBoundingClientRect().height / 2}px`);
+    r.style.setProperty('--meWidth', `${me.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--meHeight', `${me.getBoundingClientRect().height / 2}px`);
 
+    //Projects
     r.style.setProperty('--projectsTitleWidth', `${projectsTitle.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--projectsTitleHeight', `${projectsTitle.getBoundingClientRect().height / 2}px`);
-
     r.style.setProperty('--projectsGalleryWidth', `${projectsGallery.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--projectsGalleryHeight', `${projectsGallery.getBoundingClientRect().height / 2}px`);
+
+    //Resume
+    r.style.setProperty('--resumeTitleWidth', `${resumeTitle.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--resumeTitleHeight', `${resumeTitle.getBoundingClientRect().height / 2}px`);
+
+    //Contact
+    r.style.setProperty('--contactTitleWidth', `${contactTitle.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--contactTitleHeight', `${contactTitle.getBoundingClientRect().height / 2}px`);
+    r.style.setProperty('--contactBoxWidth', `${contactBox.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--contactBoxHeight', `${contactBox.getBoundingClientRect().height / 2}px`);
 }
 getCoords();
 
@@ -104,6 +122,34 @@ function findProjectsFolder(direction) {
     };
 };
 
+function findResumeFolder(direction) {
+    //Get box around folder coords
+    let rect = resumeFolder.getBoundingClientRect();
+
+    //Save center x and y to CSS (finding avg x and y)
+    r.style.setProperty('--resumeFolderX', `${(rect.left + rect.right) / 2}px`);
+    r.style.setProperty('--resumeFolderY', `${(rect.top + rect.bottom) / 2}px`);
+
+    //Update element coordinates
+    if (direction === "shrink") {
+        getCoords();
+    };
+};
+
+function findContactFolder(direction) {
+    //Get box around folder coords
+    let rect = contactFolder.getBoundingClientRect();
+
+    //Save center x and y to CSS (finding avg x and y)
+    r.style.setProperty('--contactFolderX', `${(rect.left + rect.right) / 2}px`);
+    r.style.setProperty('--contactFolderY', `${(rect.top + rect.bottom) / 2}px`);
+
+    //Update element coordinates
+    if (direction === "shrink") {
+        getCoords();
+    };
+};
+
 // Variable to keep track of which folder is currently open //
 let currentFolder = "home";
 
@@ -127,6 +173,7 @@ function shrinkAboutMe() {
     //Animations
     aboutMeTitle.style.animation = "shrinkAndMoveAboutMeTitle 1s forwards"; 
     aboutMeParagraph.style.animation = "shrinkAndMoveAboutMeParagraph 1s forwards";
+    me.style.animation = "shrinkAndMoveMe 1s forwards";
 }
 
 function shrinkProjects() {
@@ -134,8 +181,25 @@ function shrinkProjects() {
     findProjectsFolder("shrink");
 
     //Animations
-    projectsTitle.style.animation = "shrinkAndMoveProjectsTitle 1s forwards"
-    projectsGallery.style.animation = "shrinkAndMoveProjectsGallery 1s forwards"
+    projectsTitle.style.animation = "shrinkAndMoveProjectsTitle 1s forwards";
+    projectsGallery.style.animation = "shrinkAndMoveProjectsGallery 1s forwards";
+}
+
+function shrinkResume() {
+    //Get projects folder coordinates, then apply the animation for each element
+    findResumeFolder("shrink");
+
+    //Animations
+    resumeTitle.style.animation = "shrinkAndMoveResumeTitle 1s forwards";
+}
+
+function shrinkContact() {
+    //Get projects folder coordinates, then apply the animation for each element
+    findContactFolder("shrink");
+
+    //Animations
+    contactTitle.style.animation = "shrinkAndMoveContactTitle 1s forwards";
+    contactBox.style.animation = "shrinkAndMoveContactBox 1s forwards";
 }
 
 function growHome() {
@@ -198,6 +262,7 @@ function growAboutMe() {
     //Animations
     aboutMeTitle.style.animation = "growAndMoveAboutMeTitle 1s forwards"; 
     aboutMeParagraph.style.animation = "growAndMoveAboutMeParagraph 1s forwards";
+    me.style.animation = "growAndMoveMe 1s forwards";
 }
 
 function growProjects() {
@@ -230,12 +295,71 @@ function growProjects() {
     projectsGallery.style.animation = "growAndMoveProjectsGallery 1s forwards"; 
 }
 
+function growResume() {
+    //Shrink whichever folder is open
+    switch (currentFolder) {
+        case "home": 
+            shrinkHome();
+            break;
+        case "aboutMe":
+            shrinkAboutMe();
+            break;
+        case "projects":
+            shrinkProjects();
+            break;
+        case "resume":
+            return;
+        case "contact":
+            shrinkContact();
+            break;
+    };
+
+    //Tell program that home folder is being opened
+    currentFolder = "resume";
+
+    //Get home folder coordinates, then apply the animation for each element    
+    findResumeFolder("grow");
+
+    //Animations
+    resumeTitle.style.animation = "growAndMoveResumeTitle 1s forwards"; 
+}
+
+function growContact() {
+    //Shrink whichever folder is open
+    switch (currentFolder) {
+        case "home": 
+            shrinkHome();
+            break;
+        case "aboutMe":
+            shrinkAboutMe();
+            break;
+        case "projects":
+            shrinkProjects();
+            break;
+        case "resume":
+            shrinkResume();
+            break;
+        case "contact":
+            return;
+    };
+
+    //Tell program that home folder is being opened
+    currentFolder = "contact";
+
+    //Get home folder coordinates, then apply the animation for each element    
+    findContactFolder("grow");
+
+    //Animations
+    contactTitle.style.animation = "growAndMoveContactTitle 1s forwards";
+    contactBox.style.animation = "growAndMoveContactBox 1s forwards"; 
+}
+
 
 /// Add ondblclick events to each folder ///
 homeFolder.ondblclick = growHome;
 aboutMeFolder.ondblclick = growAboutMe; //Or the updated grow (any folder) function if I figure out how to do that sooner than later
 projectsFolder.ondblclick = growProjects; //Or the updated grow (any folder) function if I figure out how to do that sooner than later
-//resumeFolder.ondblclick = growResume;
-//contactsFolder.ondlbclick = growContacts;
+resumeFolder.ondblclick = growResume;
+contactFolder.ondblclick = growContact;
 
 

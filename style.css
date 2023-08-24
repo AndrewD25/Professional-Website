@@ -22,16 +22,26 @@ Presentation on 8/15/23
     --aboutMeTitleLeft: 5vw;
     --aboutMeParagraphTop: 22.5vh;
     --aboutMeParagraphLeft: 5vw; 
+    --meTop: 10vh;
+    --meLeft: 63vw; 
 
     --projectsTitleTop: 10vh;
     --projectsTitleLeft: 5vw;
     --projectsGalleryTop: 30vh;
     --projectsGalleryLeft: 0px;
+
+    --resumeTitleTop: 10vh;
+    --resumeTitleLeft: 5vw;
+
+    --contactTitleTop: 10vh;
+    --contactTitleLeft: 0vw;
+    --contactBoxTop: 25vh;
+    --contactBoxLeft: 15vw;
 }
 
 
 body {
-    background-color: #EEE;
+    background-color: aliceblue;
 
     /*Temporary backgound. Make sure to credit if image is used
     background: url("https://img.freepik.com/premium-vector/abstract-seamless-pattern-background-with-artistic-style_7505-1600.jpg?w=1380");*/
@@ -40,7 +50,19 @@ body {
     /*delete later?*/ height: 99vh;
 
     /*Overflow handling*/
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 h1, h2, h3 {
@@ -84,8 +106,8 @@ h1, h2, h3 {
     }
 }
 
-#name:hover {
-    animation: background-pan 2.5s linear infinite;
+.fancy:hover {
+    animation: background-pan 2.5s linear infinite; 
     background: linear-gradient(
         to right,
         var(--myBlue),
@@ -147,8 +169,8 @@ h1, h2, h3 {
 
     /*set position*/
     position: fixed;
-    top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight) / 2);
-    left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth) / 2);
+    top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight));
+    left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth));
     transform: scale(0);
 }
 
@@ -159,8 +181,20 @@ h1, h2, h3 {
     
     /*set position*/
     position: fixed;
-    top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight) / 2);
-    left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth) / 2);
+    top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight));
+    left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth));
+    transform: scale(0);
+}
+
+#me {
+    width: 28vw;
+    /*max-height: 60vh; Fix this height calculation for responsiveness later*/
+    aspect-ratio: auto;
+
+    /*set position*/
+    position: fixed;
+    top: calc(var(--aboutMeFolderY) - var(--meHeight));
+    left: calc(var(--aboutMeFolderX) - var(--meWidth));
     transform: scale(0);
 }
 
@@ -176,21 +210,19 @@ h1, h2, h3 {
 
     /*set position*/
     position: fixed;
-    top: calc(var(--projectsFolderY) - var(--projectsTitleHeight) / 2);
-    left: calc(var(--projectsFolderX) - var(--projectsTitleWidth) / 2);
+    top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
+    left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
     transform: scale(0);
 }
 
 #projectsGallery {
-    width: 150vw; 
     background-color: rgb(112, 112, 112);
     border-block: 5px solid var(--myBlue);
-    height: 50vh;
     display: flex;
     align-items: center;
 
     /*set position*/
-    position: fixed;
+    position: absolute;
     top: calc(var(--projectsFolderY) - var(--projectsTitleHeight) / 2);
     left: calc(var(--projectsFolderX) - var(--projectsTitleWidth) / 2);
     transform: scale(0);
@@ -218,17 +250,147 @@ div.desc {
     background-color: #DDD;
 }
 
+#resumeTitle {
+    color: rgba(0, 0, 0, 0); /* Text is fully transparent */
+    -webkit-text-stroke: 2px black; /* Outline width and color */
+    background-clip: auto;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    background-color: var(--myBlue); /*Change text color*/
+    font-size: 6rem;
+    white-space: nowrap; 
+
+    /*set position*/
+    position: fixed;
+    top: calc(var(--resumeFolderY) - var(--resumeTitleHeight));
+    left: calc(var(--resumeFolderX) - var(--resumeTitleWidth));
+    transform: scale(0);
+}
+
+#contactTitle {
+    color: rgba(0, 0, 0, 0); /* Text is fully transparent */
+    -webkit-text-stroke: 2px black; /* Outline width and color */
+    background-clip: auto;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    background-color: var(--myBlue); /*Change text color*/
+    font-size: 5rem;
+    white-space: nowrap; 
+    width: 100vw;
+    text-align: center;
+
+    /*set position*/
+    position: fixed;
+    top: calc(var(--contactFolderY) - var(--contactTitleHeight));
+    left: calc(var(--contactFolderX) - var(--contactTitleWidth));
+    transform: scale(0);
+}
+
+#contactBox {
+    border: 1px solid black;
+    /*border-bottom: none;*/
+    width: 70vw;
+    height: 50vh;
+    border-radius: 1vw;
+    /*Move behind the rounded blue div at some point*/
+    display: flex;
+    padding: 1vw;
+    background-color: white;
+
+    /*set position*/
+    position: fixed;
+    top: calc(var(--contactBoxY) - var(--contactBoxHeight));
+    left: calc(var(--contactBoxX) - var(--contactBoxWidth));
+    transform: scale(0);
+}
+
+#contactLeftSide {
+    width: 50%;
+    display: inline-block;
+    border-right: 1px solid black;
+    padding-right: 1vw;
+}
+
+#contactBox form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25vw;
+}
+
+#nameInput, #emailInput {
+    display: block;
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid black;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+#messageInput {
+    display: block;
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid black;
+    resize: vertical;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem
+}
+
+#submitContactForm {
+    padding: 1vw;
+    background-color: var(--myBlue);
+    border: none;
+    border-radius: 1vw;
+    width: 10vw;
+}
+
+#contactRightSide {
+    width: 50%;
+    display: inline-block;
+    padding-left: 1vw;
+}
+
+#contactsFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactInfoDiv {
+    display: flex;
+    align-items: center;
+    margin-block: 2vw;
+}
+
+.contactInfoDiv img {
+    width: 4vw;
+    height: 4vw;
+    display: inline-block;
+    margin-right: 1vw;
+}
+
+.contactInfoDiv p {
+    margin: 0;
+    font-size: 2vw;
+    text-align: left;
+    display: inline-block;
+}
+
+
 /*-------------------------*/
 @keyframes shrinkAndMoveGreeting {
     from {
         top: var(--greetingTop);
         left: var(--greetingLeft);
         transform: scale(1);
+        transform-origin: center;
     }
     to {
         top: calc(var(--homeFolderY) - var(--greetingHeight));
         left: calc(var(--homeFolderX) - var(--greetingWidth));
         transform: scale(0);
+        transform-origin: center;
     }
 }
 
@@ -237,11 +399,13 @@ div.desc {
         top: calc(var(--homeFolderY) - var(--greetingHeight));
         left: calc(var(--homeFolderX) - var(--greetingWidth));
         transform: scale(0);
+        transform-origin: top left;
     }
     to {
         top: var(--greetingTop);
         left: var(--greetingLeft);
         transform: scale(1);
+        transform-origin: top left;
     }
 }
 
@@ -250,11 +414,13 @@ div.desc {
         top: var(--nameTop);
         left: var(--nameLeft);
         transform: scale(1);
+        transform-origin: center;
     }
     to {
         top: calc(var(--homeFolderY) - var(--myNameHeight));
         left: calc(var(--homeFolderX) - var(--myNameWidth));
         transform: scale(0);
+        transform-origin: center;
     }
 }
 
@@ -263,11 +429,13 @@ div.desc {
         top: calc(var(--homeFolderY) - var(--myNameHeight));
         left: calc(var(--homeFolderX) - var(--myNameWidth)); 
         transform: scale(0);
+        transform-origin: top left;
     }
     to {
         top: var(--nameTop);
         left: var(--nameLeft);
         transform: scale(1);
+        transform-origin: top left;
     }
 }
 
@@ -276,11 +444,13 @@ div.desc {
         top: var(--introTop);
         left: var(--introLeft);
         transform: scale(1);
+        transform-origin: center;
     }
     to {
         top: calc(var(--homeFolderY) - var(--introHeight));
         left: calc(var(--homeFolderX) - var(--introWidth));
         transform: scale(0);
+        transform-origin: center;
     }
 }
 
@@ -289,11 +459,13 @@ div.desc {
         top: calc(var(--homeFolderY) - var(--introHeight));
         left: calc(var(--homeFolderX) - var(--introWidth));
         transform: scale(0);
+        transform-origin: top left;
     }
     to {
         top: var(--introTop);
         left: var(--introLeft);
         transform: scale(1);
+        transform-origin: top left;
     }
 }
 
@@ -302,11 +474,13 @@ div.desc {
         top: var(--instructionsTop);
         left: var(--instructionsLeft);
         transform: scale(1);
+        transform-origin: center;
     }
     to {
         top: calc(var(--homeFolderY) - var(--instructionsHeight));
         left: calc(var(--homeFolderX) - var(--instructionsWidth));
         transform: scale(0);
+        transform-origin: center;
     }
 }
 
@@ -315,11 +489,13 @@ div.desc {
         top: calc(var(--homeFolderY) - var(--instructionsHeight));
         left: calc(var(--homeFolderX) - var(--instructionsWidth));
         transform: scale(0);
+        transform-origin: top left;
     }
     to {
         top: var(--instructionsTop);
         left: var(--instructionsLeft);
         transform: scale(1);
+        transform-origin: top left;
     }
 }
 
@@ -328,11 +504,13 @@ div.desc {
         top: var(--aboutMeTitleTop);
         left: var(--aboutMeTitleLeft);
         transform: scale(1);
+        transform-origin: center;
     }
     to {
         top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight));
         left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth));
         transform: scale(0);
+        transform-origin: center;
     }
 }
 
@@ -341,11 +519,13 @@ div.desc {
         top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight));
         left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth));
         transform: scale(0);
+        transform-origin: top left;
     }
     to {
         top: var(--aboutMeTitleTop);
         left: var(--aboutMeTitleLeft);
         transform: scale(1);
+        transform-origin: top left;
     }
 }
 
@@ -354,11 +534,13 @@ div.desc {
         top: var(--aboutMeParagraphTop);
         left: var(--aboutMeParagraphLeft);
         transform: scale(1);
+        transform-origin: center;
     }
     to {
         top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight));
         left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth));
         transform: scale(0);
+        transform-origin: center;
     }
 }
 
@@ -367,11 +549,43 @@ div.desc {
         top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight));
         left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth));
         transform: scale(0);
+        transform-origin: top left;
     }
     to {
         top: var(--aboutMeParagraphTop);
         left: var(--aboutMeParagraphLeft);
         transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
+@keyframes shrinkAndMoveMe {
+    from {
+        top: var(--meTop);
+        left: var(--meLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--aboutMeFolderY) - var(--meHeight));
+        left: calc(var(--aboutMeFolderX) - var(--meWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveMe {
+    from {
+        top: calc(var(--aboutMeFolderY) - var(--meHeight));
+        left: calc(var(--aboutMeFolderX) - var(--meWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--meTop);
+        left: var(--meLeft);
+        transform: scale(1);
+        transform-origin: top left;
     }
 }
 
@@ -380,11 +594,13 @@ div.desc {
         top: var(--projectsTitleTop);
         left: var(--projectsTitleLeft);
         transform: scale(1);
+        transform-origin: center;
     }
     to {
         top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
         left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
         transform: scale(0);
+        transform-origin: center;
     }
 }
 
@@ -393,11 +609,13 @@ div.desc {
         top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
         left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
         transform: scale(0);
+        transform-origin: top left;
     }
     to {
         top: var(--projectsTitleTop);
         left: var(--projectsTitleLeft);
         transform: scale(1);
+        transform-origin: top left;
     }
 }
 
@@ -406,11 +624,13 @@ div.desc {
         top: var(--projectsGalleryTop);
         left: var(--projectsGalleryLeft);
         transform: scale(1);
+        transform-origin: center;
     }
     to {
         top: calc(var(--projectsFolderY) - var(--projectsGalleryHeight));
         left: calc(var(--projectsFolderX) - var(--projectsGalleryWidth));
         transform: scale(0);
+        transform-origin: center;
     }
 }
 
@@ -419,13 +639,106 @@ div.desc {
         top: calc(var(--projectsFolderY) - var(--projectsGalleryHeight));
         left: calc(var(--projectsFolderX) - var(--projectsGalleryWidth));
         transform: scale(0);
+        transform-origin: top left;
     }
     to {
         top: var(--projectsGalleryTop);
         left: var(--projectsGalleryLeft);
         transform: scale(1);
+        transform-origin: top left;
     }
 }
+
+@keyframes shrinkAndMoveResumeTitle {
+    from {
+        top: var(--resumeTitleTop);
+        left: var(--resumeTitleLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--resumeFolderY) - var(--resumeTitleHeight));
+        left: calc(var(--resumeFolderX) - var(--resumeTitleWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveResumeTitle {
+    from {
+        top: calc(var(--resumeFolderY) - var(--resumeTitleHeight));
+        left: calc(var(--resumeFolderX) - var(--resumeTitleWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--resumeTitleTop);
+        left: var(--resumeTitleLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
+@keyframes shrinkAndMoveContactTitle {
+    from {
+        top: var(--contactTitleTop);
+        left: var(--contactTitleLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--contactFolderY) - var(--contactTitleHeight));
+        left: calc(var(--contactFolderX) - var(--contactTitleWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveContactTitle {
+    from {
+        top: calc(var(--contactFolderY) - var(--contactTitleHeight));
+        left: calc(var(--contactFolderX) - var(--contactTitleWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--contactTitleTop);
+        left: var(--contactTitleLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
+@keyframes shrinkAndMoveContactBox {
+    from {
+        top: var(--contactBoxTop);
+        left: var(--contactBoxLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--contactFolderY) - var(--contactBoxHeight));
+        left: calc(var(--contactFolderX) - var(--contactBoxWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveContactBox {
+    from {
+        top: calc(var(--contactFolderY) - var(--contactBoxHeight));
+        left: calc(var(--contactFolderX) - var(--contactBoxWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--contactBoxTop);
+        left: var(--contactBoxLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
 
 /*-----------------------*/
 
