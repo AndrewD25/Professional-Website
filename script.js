@@ -27,6 +27,7 @@ const projectsGallery = document.getElementById("projectsGallery");
 
 //Resume page
 const resumeTitle = document.getElementById("resumeTitle");
+const myResume = document.getElementById("myResume");
 
 //Contact page
 const contactTitle = document.getElementById("contactTitle");
@@ -62,6 +63,8 @@ function getCoords() {
     //Resume
     r.style.setProperty('--resumeTitleWidth', `${resumeTitle.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--resumeTitleHeight', `${resumeTitle.getBoundingClientRect().height / 2}px`);
+    r.style.setProperty('--myResumeWidth', `${myResume.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--myResumeHeight', `${myResume.getBoundingClientRect().height / 2}px`);
 
     //Contact
     r.style.setProperty('--contactTitleWidth', `${contactTitle.getBoundingClientRect().width / 2}px`);
@@ -183,6 +186,9 @@ function shrinkProjects() {
     //Animations
     projectsTitle.style.animation = "shrinkAndMoveProjectsTitle 1s forwards";
     projectsGallery.style.animation = "shrinkAndMoveProjectsGallery 1s forwards";
+
+    //Reset cursor
+    document.documentElement.style.cursor = "auto";
 }
 
 function shrinkResume() {
@@ -191,6 +197,7 @@ function shrinkResume() {
 
     //Animations
     resumeTitle.style.animation = "shrinkAndMoveResumeTitle 1s forwards";
+    myResume.style.animation = "shrinkAndMoveMyResume 1s forwards";
 }
 
 function shrinkContact() {
@@ -293,6 +300,9 @@ function growProjects() {
     //Animations
     projectsTitle.style.animation = "growAndMoveProjectsTitle 1s forwards"; 
     projectsGallery.style.animation = "growAndMoveProjectsGallery 1s forwards"; 
+
+    //Set cursor to grab
+    document.documentElement.style.cursor = "grab";
 }
 
 function growResume() {
@@ -322,6 +332,7 @@ function growResume() {
 
     //Animations
     resumeTitle.style.animation = "growAndMoveResumeTitle 1s forwards"; 
+    myResume.style.animation = "growAndMoveMyResume 1s forwards"; 
 }
 
 function growContact() {
@@ -363,3 +374,26 @@ resumeFolder.ondblclick = growResume;
 contactFolder.ondblclick = growContact;
 
 
+/// Projects Gallery Scrolling Events ///
+let isDragging = false;
+let startX = 0;
+
+document.addEventListener('mousedown', (event) => {
+  if (event.button === 0) { // Left mouse button
+    isDragging = true;
+    startX = event.clientX;
+    event.preventDefault(); // Prevents text selection during drag
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+document.addEventListener('mousemove', (event) => {
+  if (isDragging) {
+    const deltaX = startX - event.clientX;
+    window.scrollBy(deltaX, 0);
+    startX = event.clientX;
+  }
+});

@@ -32,6 +32,8 @@ Presentation on 8/15/23
 
     --resumeTitleTop: 10vh;
     --resumeTitleLeft: 5vw;
+    --myResumeTop: 10vh;
+    --myResumeLeft: 63vw; 
 
     --contactTitleTop: 10vh;
     --contactTitleLeft: 0vw;
@@ -41,7 +43,7 @@ Presentation on 8/15/23
 
 
 body {
-    background-color: aliceblue;
+    background-color: #f0f8ff;
 
     /*Temporary backgound. Make sure to credit if image is used
     background: url("https://img.freepik.com/premium-vector/abstract-seamless-pattern-background-with-artistic-style_7505-1600.jpg?w=1380");*/
@@ -50,7 +52,7 @@ body {
     /*delete later?*/ height: 99vh;
 
     /*Overflow handling*/
-    overflow-x: auto;
+    overflow-x: scroll;
     overflow-y: hidden;
 }
 
@@ -233,10 +235,10 @@ div.gallery {
     float: left;
     width: 45vw;
     margin: 10px;
-  }
+}
   
 div.gallery:hover {
-    border: 1px solid #000;
+    border: 1px solid var(--myBlue);
 }
   
 div.gallery img {
@@ -245,9 +247,41 @@ div.gallery img {
 }
   
 div.desc {
-    padding: 15px;
+    padding-inline: 2vw;
     text-align: center;
     background-color: #DDD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.desc p {
+    display: inline-block;
+    width: fit-content;
+}
+
+.tags {
+    display: flex;
+    gap: 0.5vw;
+}
+
+.tag {
+    color: white;
+    border: 1px solid black;
+    border-radius: 0.5vw;
+    padding: 0.3vw;
+}
+
+.html {
+    background-color: rgb(255, 94, 0);
+}
+
+.css {
+    background-color: rgb(0, 183, 255);
+}
+
+.js {
+    background-color: rgb(207, 1, 207);
 }
 
 #resumeTitle {
@@ -265,6 +299,27 @@ div.desc {
     top: calc(var(--resumeFolderY) - var(--resumeTitleHeight));
     left: calc(var(--resumeFolderX) - var(--resumeTitleWidth));
     transform: scale(0);
+}
+
+#myResume {
+    text-align: right;
+
+    /*set position*/
+    position: fixed;
+    top: calc(var(--resumeFolderY) - var(--myResumeHeight));
+    left: calc(var(--resumeFolderX) - var(--myResumeWidth));
+    transform: scale(0);
+}
+
+#resumeImg {
+    width: 28vw;
+    /*max-height: 60vh; Fix this height calculation for responsiveness later*/
+    aspect-ratio: auto;
+}
+
+#myResume a {
+    /*Fill this in later*/
+    display: auto; /*delete this once I put something real*/
 }
 
 #contactTitle {
@@ -679,6 +734,36 @@ div.desc {
     }
 }
 
+@keyframes shrinkAndMoveMyResume {
+    from {
+        top: var(--myResumeTop);
+        left: var(--myResumeLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--resumeFolderY) - var(--myResumeHeight));
+        left: calc(var(--resumeFolderX) - var(--myResumeWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveMyResume {
+    from {
+        top: calc(var(--resumeFolderY) - var(--myResumeHeight));
+        left: calc(var(--resumeFolderX) - var(--myResumeWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--myResumeTop);
+        left: var(--myResumeLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
 @keyframes shrinkAndMoveContactTitle {
     from {
         top: var(--contactTitleTop);
@@ -752,6 +837,7 @@ div.desc {
     display: flex;
     justify-content: space-around;
     z-index: 999;
+    cursor: auto !important;
 }
 
 .folder {

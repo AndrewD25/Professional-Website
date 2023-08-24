@@ -14,6 +14,7 @@ Presentation on 8/15/23
         <meta name="author" content="Andrew Deal">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <link rel="icon" type="image/x-icon" href="favicon4.jpg">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -48,19 +49,41 @@ Presentation on 8/15/23
                         <a target="_blank" href="https://github.com/AndrewD25/Pong">
                           <img src="pongScreenshot.png" alt="Pong">
                         </a>
-                        <div class="desc">Pong</div>
+                        <div class="desc">
+                            <p>Pong</p>
+                            <div class="tags">
+                                <p class="html tag">HTML</p>
+                                <p class="css tag">CSS</p>
+                                <p class="js tag">JavaScript</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="gallery">
                         <a target="_blank" href="https://github.com/AndrewD25/Illuminate">
                           <img src="illuminateScreenshot.png" alt="Illuminate">
                         </a>
-                        <div class="desc">Illuminate</div>
+                        <div class="desc">
+                            <p>Illuminate</p>
+                            <div class="tags">
+                                <p class="html tag">HTML</p>
+                                <p class="css tag">CSS</p>
+                                <p class="js tag">JavaScript</p>
+                            </div>
+                        </div>
+                        
                     </div>   
                     <div class="gallery">
                         <a target="_blank" href="https://github.com/AndrewD25/read-rover">
                           <img src="readroverScreenshot.png" alt="Read Rover">
                         </a>
-                        <div class="desc">Read Rover</div>
+                        <div class="desc">
+                            <p>Read Rover</p>
+                            <div class="tags">
+                                <p class="html tag">HTML</p>
+                                <p class="css tag">CSS</p>
+                                <p class="js tag">JavaScript</p>
+                            </div>
+                        </div>
                     </div>                 
                 </div>
             </div>
@@ -68,6 +91,12 @@ Presentation on 8/15/23
             <div id="resumePage">
                 <h1 id="resumeTitle">Resume</h1>
 
+                <!--My resume as img-->
+                <div id="myResume">
+                    <img id="resumeImg" src="Resume v7.jpg" alt="My Resume">
+                    <br>
+                    <a href="Resume v7.pdf" download target="_blank">View or Download Resume</a>
+                </div>
             </div>
 
             <div id="contactPage">
@@ -76,7 +105,7 @@ Presentation on 8/15/23
                     <div id="contactLeftSide">
                         <h2>Send Me A Message:</h2>
 
-                        <form>
+                        <form action="https://formsubmit.co/andrewsdeal@gmail.com" method="POST"> <!--Using Form Submit program for now, update later?-->
                             <input type="text" id="nameInput" name="nameInput" placeholder="Name">
                             <input type="email" id="emailInput" name="emailInput" placeholder="Email">
                             <textarea id="messageInput" name="messageInput" placeholder="Type out a message here"></textarea>
