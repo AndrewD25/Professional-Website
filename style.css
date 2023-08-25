@@ -9,21 +9,21 @@ Presentation on 8/15/23
     
     /*Define left and right values for each element here*/
     /*This makes changing them easier because it applies to original position + animations*/
-    --greetingTop: 22vh;
+    --greetingTop: clamp(1vh, 10vw, 20vh);
     --greetingLeft: 5vw;
-    --nameTop: 30vh;
+    --nameTop: clamp(1vh, 15vw, 30vh);
     --nameLeft: 5vw;
-    --introTop: 50vh;
+    --introTop: clamp(1vh, 27vw, 54vh);
     --introLeft: 5vw;
-    --instructionsTop: 60vh;
+    --instructionsTop: clamp(1vh, 32.5vw, 65vh);
     --instructionsLeft: 5vw;
     
-    --aboutMeTitleTop: 10vh;
+    --aboutMeTitleTop: clamp(1vh, 5vw, 10vh);
     --aboutMeTitleLeft: 5vw;
-    --aboutMeParagraphTop: 22.5vh;
+    --aboutMeParagraphTop: clamp(1vh, 12vw, 24vh);
     --aboutMeParagraphLeft: 5vw; 
-    --meTop: 10vh;
-    --meLeft: 63vw; 
+    --meTop: clamp(1vh, 6vw, 12vh);
+    --meLeft: 65vw; 
 
     --projectsTitleTop: 10vh;
     --projectsTitleLeft: 5vw;
@@ -35,9 +35,9 @@ Presentation on 8/15/23
     --myResumeTop: 10vh;
     --myResumeLeft: 63vw; 
 
-    --contactTitleTop: 10vh;
+    --contactTitleTop: clamp(1vh, 5vw, 10vh);
     --contactTitleLeft: 0vw;
-    --contactBoxTop: 25vh;
+    --contactBoxTop: clamp(1vh, 13.5vw, 27vh);
     --contactBoxLeft: 15vw;
 }
 
@@ -53,7 +53,7 @@ body {
 
     /*Overflow handling*/
     overflow-x: scroll;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -72,7 +72,8 @@ h1, h2, h3 {
 }
 
 #greeting { 
-    font-size: 4rem;
+    font-size: clamp(1px, 5vw, 10vh);
+    
 
     /*Set position*/
     position: fixed;
@@ -83,33 +84,13 @@ h1, h2, h3 {
 
 #name {
     font-family: monospace serif;
-    font-size: 8rem;
+    font-size: clamp(1px, 11vw, 22vh);
     color: rgba(0, 0, 0, 0); /* Text is fully transparent */
     -webkit-text-stroke: 2px black; /* Outline width and color */
-    background-clip: auto;
-    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: bold;
-    background-color: var(--myBlue); /*Change text color*/
-    white-space: nowrap; 
 
-    /*Set position*/
-    position: fixed;
-    top: var(--nameTop);
-    left: var(--nameLeft);
-}
-
-@media only screen and (max-width: 400px) {
-    #name {
-        color: black;
-        font-size: 3rem;
-        left: 0px;
-        width: 100%;
-        text-align: center;
-    }
-}
-
-.fancy:hover {
-    animation: background-pan 2.5s linear infinite; 
+    /*Setup for ".fancy" background moving animation*/
     background: linear-gradient(
         to right,
         var(--myBlue),
@@ -123,23 +104,51 @@ h1, h2, h3 {
     background-size: 200%;
     background-clip: auto; /*Unnecessary but gets rid of yellow squiggly line*/
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     white-space: nowrap;
+
+    /*Set position*/
+    position: fixed;
+    top: var(--nameTop);
+    left: var(--nameLeft);
 }
 
-@keyframes background-pan {
+@media only screen and (max-width: 400px) {
+    #name {
+        color: var(--myBlue);
+        -webkit-text-stroke: 1px black; /* Outline width and color */
+        font-size: 15vw;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/*.fancy {
+    
+    background-clip: auto; /*Unnecessary but gets rid of yellow squiggly line
+    -webkit-background-clip: text;
+    white-space: nowrap;
+}*/
+
+@keyframes background-pan { /*Also has to keep it at its position*/
     from {
         background-position: -200% center;
+        top: var(--nameTop);
+        left: var(--nameLeft);
+        transform: scale(1);
     }
 
     to {
         background-position: 0% center;
+        top: var(--nameTop);
+        left: var(--nameLeft);
+        transform: scale(1);
     }
 }
 
 #intro {
-    font-size: 2rem;
-    padding-bottom: 10px;
+    font-size: clamp(1px, 3vw, 6vh);
+    padding-bottom: 1vw;
     border-bottom: 3px solid var(--myBlue);
 
     /*Set position*/
@@ -150,7 +159,7 @@ h1, h2, h3 {
 }
 
 #instructions {
-    font-size: 2rem;
+    font-size: clamp(1px, 3vw, 6vh);
     white-space: nowrap; 
 
     /*set position*/
@@ -166,7 +175,7 @@ h1, h2, h3 {
     -webkit-background-clip: text;
     font-weight: bold;
     background-color: var(--myBlue); /*Change text color*/
-    font-size: 6rem;
+    font-size: clamp(1px, 8vw, 16vh);
     white-space: nowrap; 
 
     /*set position*/
@@ -177,9 +186,8 @@ h1, h2, h3 {
 }
 
 #aboutMeParagraph {
-    text-indent: 3.5rem;
-    font-size: 1.5rem;
-    width: 50%;
+    font-size: clamp(1px, 1.75vw, 3.5vh);
+    width: clamp(10vw, 55vw, 110vh);
     
     /*set position*/
     position: fixed;
@@ -189,7 +197,7 @@ h1, h2, h3 {
 }
 
 #me {
-    width: 28vw;
+    width: clamp(1vw, 28vw, 48vh);
     /*max-height: 60vh; Fix this height calculation for responsiveness later*/
     aspect-ratio: auto;
 
@@ -244,9 +252,11 @@ div.gallery:hover {
 div.gallery img {
     width: 100%;
     height: auto;
+    display: block;
 }
   
 div.desc {
+    border-top: 1px solid #333;
     padding-inline: 2vw;
     text-align: center;
     background-color: #DDD;
@@ -329,7 +339,7 @@ div.desc p {
     -webkit-background-clip: text;
     font-weight: bold;
     background-color: var(--myBlue); /*Change text color*/
-    font-size: 5rem;
+    font-size: clamp(1px, 7vw, 14vh);
     white-space: nowrap; 
     width: 100vw;
     text-align: center;
@@ -344,8 +354,8 @@ div.desc p {
 #contactBox {
     border: 1px solid black;
     /*border-bottom: none;*/
-    width: 70vw;
-    height: 50vh;
+    width: clamp(10vw, 70vw, 140vh);
+    height: clamp(1vw, 45vh, 25vw);
     border-radius: 1vw;
     /*Move behind the rounded blue div at some point*/
     display: flex;

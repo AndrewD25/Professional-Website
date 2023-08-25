@@ -163,10 +163,10 @@ function shrinkHome() {
     findHomeFolder("shrink");
 
     //Animations
-    greeting.style.animation = "shrinkAndMoveGreeting 1s forwards"; 
-    myName.style.animation = "shrinkAndMoveName 1s forwards"; 
-    intro.style.animation = "shrinkAndMoveIntro 1s forwards"; 
-    instructions.style.animation = "shrinkAndMoveInstructions 1s forwards"; 
+    greeting.style.animation = "shrinkAndMoveGreeting 1s 0.15s forwards";
+    myName.style.animation = "shrinkAndMoveName 1s 0.1s forwards";
+    intro.style.animation = "shrinkAndMoveIntro 1s 0.05s forwards";
+    instructions.style.animation = "shrinkAndMoveInstructions 1s forwards";
 }
 
 function shrinkAboutMe() {
@@ -373,10 +373,22 @@ projectsFolder.ondblclick = growProjects; //Or the updated grow (any folder) fun
 resumeFolder.ondblclick = growResume;
 contactFolder.ondblclick = growContact;
 
+/// Give myName an event that keeps its animation ///
+//Temporarily disabled because it's buggy
+/*
+myName.addEventListener('mouseenter', function () {
+    myName.style.animation = "background-pan 2.5s linear infinite"
+});
+
+myName.addEventListener('mouseleave', function () {
+    myName.style.animation = "none"
+});
+*/
 
 /// Projects Gallery Scrolling Events ///
 let isDragging = false;
 let startX = 0;
+
 
 document.addEventListener('mousedown', (event) => {
     if (currentFolder === "projects") {
