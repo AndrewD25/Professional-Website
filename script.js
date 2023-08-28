@@ -25,8 +25,9 @@ const me = document.getElementById("me");
 const projectsTitle = document.getElementById("projectsTitle");
 const projectsGallery = document.getElementById("projectsGallery");
 
-//Resume page
-const resumeTitle = document.getElementById("resumeTitle");
+//Experience page
+const experienceTitle = document.getElementById("experienceTitle");
+const experienceDescription = document.getElementById("experienceDescription");
 const myResume = document.getElementById("myResume");
 
 //Contact page
@@ -60,9 +61,11 @@ function getCoords() {
     r.style.setProperty('--projectsGalleryWidth', `${projectsGallery.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--projectsGalleryHeight', `${projectsGallery.getBoundingClientRect().height / 2}px`);
 
-    //Resume
-    r.style.setProperty('--resumeTitleWidth', `${resumeTitle.getBoundingClientRect().width / 2}px`);
-    r.style.setProperty('--resumeTitleHeight', `${resumeTitle.getBoundingClientRect().height / 2}px`);
+    //Experience
+    r.style.setProperty('--experienceTitleWidth', `${experienceTitle.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--experienceTitleHeight', `${experienceTitle.getBoundingClientRect().height / 2}px`);
+    r.style.setProperty('--experienceDescriptionWidth', `${experienceDescription.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--experienceDescriptionHeight', `${experienceDescription.getBoundingClientRect().height / 2}px`);
     r.style.setProperty('--myResumeWidth', `${myResume.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--myResumeHeight', `${myResume.getBoundingClientRect().height / 2}px`);
 
@@ -79,7 +82,7 @@ const allFolders = document.getElementsByClassName("folder");
   const homeFolder = allFolders[0];
   const aboutMeFolder = allFolders[1];
   const projectsFolder = allFolders[2];
-  const resumeFolder = allFolders[3];
+  const experienceFolder = allFolders[3];
   const contactFolder = allFolders[4];
 
 /// Get Folder Positions ///
@@ -125,13 +128,13 @@ function findProjectsFolder(direction) {
     };
 };
 
-function findResumeFolder(direction) {
+function findExperienceFolder(direction) {
     //Get box around folder coords
-    let rect = resumeFolder.getBoundingClientRect();
+    let rect = experienceFolder.getBoundingClientRect();
 
     //Save center x and y to CSS (finding avg x and y)
-    r.style.setProperty('--resumeFolderX', `${(rect.left + rect.right) / 2}px`);
-    r.style.setProperty('--resumeFolderY', `${(rect.top + rect.bottom) / 2}px`);
+    r.style.setProperty('--experienceFolderX', `${(rect.left + rect.right) / 2}px`);
+    r.style.setProperty('--experienceFolderY', `${(rect.top + rect.bottom) / 2}px`);
 
     //Update element coordinates
     if (direction === "shrink") {
@@ -191,12 +194,13 @@ function shrinkProjects() {
     document.documentElement.style.cursor = "auto";
 }
 
-function shrinkResume() {
+function shrinkExperience() {
     //Get projects folder coordinates, then apply the animation for each element
-    findResumeFolder("shrink");
+    findExperienceFolder("shrink");
 
     //Animations
-    resumeTitle.style.animation = "shrinkAndMoveResumeTitle 1s forwards";
+    experienceTitle.style.animation = "shrinkAndMoveExperienceTitle 1s forwards";
+    experienceDescription.style.animation = "shrinkAndMoveExperienceDescription 1s forwards";
     myResume.style.animation = "shrinkAndMoveMyResume 1s forwards";
 }
 
@@ -220,8 +224,8 @@ function growHome() {
         case "projects":
             shrinkProjects();
             break;
-        case "resume":
-            shrinkResume();
+        case "experience":
+            shrinkExperience();
             break;
         case "contact":
             shrinkContact();
@@ -252,8 +256,8 @@ function growAboutMe() {
         case "projects":
             shrinkProjects();
             break;
-        case "resume":
-            shrinkResume();
+        case "experience":
+            shrinkExperience();
             break;
         case "contact":
             shrinkContact();
@@ -283,8 +287,8 @@ function growProjects() {
             break;
         case "projects":
             return;
-        case "resume":
-            shrinkResume();
+        case "experience":
+            shrinkExperience();
             break;
         case "contact":
             shrinkContact();
@@ -305,7 +309,7 @@ function growProjects() {
     document.documentElement.style.cursor = "grab";
 }
 
-function growResume() {
+function growExperience() {
     //Shrink whichever folder is open
     switch (currentFolder) {
         case "home": 
@@ -317,7 +321,7 @@ function growResume() {
         case "projects":
             shrinkProjects();
             break;
-        case "resume":
+        case "experience":
             return;
         case "contact":
             shrinkContact();
@@ -325,13 +329,14 @@ function growResume() {
     };
 
     //Tell program that home folder is being opened
-    currentFolder = "resume";
+    currentFolder = "experience";
 
     //Get home folder coordinates, then apply the animation for each element    
-    findResumeFolder("grow");
+    findExperienceFolder("grow");
 
     //Animations
-    resumeTitle.style.animation = "growAndMoveResumeTitle 1s forwards"; 
+    experienceTitle.style.animation = "growAndMoveExperienceTitle 1s forwards"; 
+    experienceDescription.style.animation = "growAndMoveExperienceDescription 1s forwards"; 
     myResume.style.animation = "growAndMoveMyResume 1s forwards"; 
 }
 
@@ -347,8 +352,8 @@ function growContact() {
         case "projects":
             shrinkProjects();
             break;
-        case "resume":
-            shrinkResume();
+        case "experience":
+            shrinkExperience();
             break;
         case "contact":
             return;
@@ -365,12 +370,11 @@ function growContact() {
     contactBox.style.animation = "growAndMoveContactBox 1s forwards"; 
 }
 
-
 /// Add ondblclick events to each folder ///
 homeFolder.ondblclick = growHome;
 aboutMeFolder.ondblclick = growAboutMe; //Or the updated grow (any folder) function if I figure out how to do that sooner than later
 projectsFolder.ondblclick = growProjects; //Or the updated grow (any folder) function if I figure out how to do that sooner than later
-resumeFolder.ondblclick = growResume;
+experienceFolder.ondblclick = growExperience;
 contactFolder.ondblclick = growContact;
 
 /// Give myName an event that keeps its animation ///
