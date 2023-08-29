@@ -472,7 +472,7 @@ div.desc p {
     height: clamp(1vw, 22vh, 11vw);
     border: none;
     border-bottom: 1px solid black;
-    resize: vertical;
+    resize: none;
     font-family: 'Courier New', Courier, monospace;
     font-size: clamp(1px, 1.5vw, 3vh);
 }
