@@ -1,1 +1,0 @@
-The website is going through some major changes. As of right now, I have many different prototypes made with small changes. It's not really enough to be making a bunch of new branches, so I might take a break from uploading to this repo for a little bit and just save things on my hard drive for a bit
