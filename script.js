@@ -165,10 +165,16 @@ function shrinkHome() {
     //Get home folder coordinates, then apply the animation for each element
     findHomeFolder("shrink");
 
+    //By setting default scales to 1 here, it ensures that the animation delay does not make them disappear from the page
+    greeting.style.transform = "scale(1)";
+    myName.style.transform = "scale(1)";
+    intro.style.transform = "scale(1)";
+    instructions.style.transform = "scale(1)";
+
     //Animations
-    greeting.style.animation = "shrinkAndMoveGreeting 1s 0.15s forwards";
-    myName.style.animation = "shrinkAndMoveName 1s 0.1s forwards";
-    intro.style.animation = "shrinkAndMoveIntro 1s 0.05s forwards";
+    greeting.style.animation = "shrinkAndMoveGreeting 1s 0.6s forwards";
+    myName.style.animation = "shrinkAndMoveName 1s 0.9s forwards";
+    intro.style.animation = "shrinkAndMoveIntro 1s 0.3s forwards";
     instructions.style.animation = "shrinkAndMoveInstructions 1s forwards";
 }
 
@@ -176,19 +182,28 @@ function shrinkAboutMe() {
     //Get about me folder coordinates, then apply the animation for each element
     findAboutMeFolder("shrink");
 
+    //By setting default scales to 1 here, it ensures that the animation delay does not make them disappear from the page
+    aboutMeTitle.style.transform = "scale(1)";
+    aboutMeParagraph.style.transform = "scale(1)";
+    me.style.transform = "scale(1)";
+
     //Animations
-    aboutMeTitle.style.animation = "shrinkAndMoveAboutMeTitle 1s forwards"; 
+    aboutMeTitle.style.animation = "shrinkAndMoveAboutMeTitle 1s 0.6s forwards"; 
     aboutMeParagraph.style.animation = "shrinkAndMoveAboutMeParagraph 1s forwards";
-    me.style.animation = "shrinkAndMoveMe 1s forwards";
+    me.style.animation = "shrinkAndMoveMe 1s 0.4s forwards";
 }
 
 function shrinkProjects() {
     //Get projects folder coordinates, then apply the animation for each element
     findProjectsFolder("shrink");
 
+    //By setting default scales to 1 here, it ensures that the animation delay does not make them disappear from the page
+    projectsTitle.style.transform = "scale(1)";
+    projectsGallery.style.transform = "scale(1)";
+
     //Animations
-    projectsTitle.style.animation = "shrinkAndMoveProjectsTitle 1s forwards";
-    projectsGallery.style.animation = "shrinkAndMoveProjectsGallery 1s forwards";
+    projectsTitle.style.animation = "shrinkAndMoveProjectsTitle 1s 0.6s forwards";
+    projectsGallery.style.animation = "shrinkAndMoveProjectsGallery 1s 0.4s forwards";
 
     //Reset cursor
     document.documentElement.style.cursor = "auto";
@@ -198,9 +213,14 @@ function shrinkExperience() {
     //Get projects folder coordinates, then apply the animation for each element
     findExperienceFolder("shrink");
 
+    //By setting default scales to 1 here, it ensures that the animation delay does not make them disappear from the page
+    experienceTitle.style.transform = "scale(1)";
+    experienceDescription.style.transform = "scale(1)";
+    myResume.style.transform = "scale(1)";
+
     //Animations
-    experienceTitle.style.animation = "shrinkAndMoveExperienceTitle 1s forwards";
-    experienceDescription.style.animation = "shrinkAndMoveExperienceDescription 1s forwards";
+    experienceTitle.style.animation = "shrinkAndMoveExperienceTitle 1s 0.6s forwards";
+    experienceDescription.style.animation = "shrinkAndMoveExperienceDescription 1s 0.3s forwards";
     myResume.style.animation = "shrinkAndMoveMyResume 1s forwards";
 }
 
@@ -208,12 +228,16 @@ function shrinkContact() {
     //Get projects folder coordinates, then apply the animation for each element
     findContactFolder("shrink");
 
+    //By setting default scales to 1 here, it ensures that the animation delay does not make them disappear from the page
+    contactTitle.style.transform = "scale(1)";
+    contactBox.style.transform = "scale(1)";
+
     //Animations
-    contactTitle.style.animation = "shrinkAndMoveContactTitle 1s forwards";
-    contactBox.style.animation = "shrinkAndMoveContactBox 1s forwards";
+    contactTitle.style.animation = "shrinkAndMoveContactTitle 1s 0.6s forwards";
+    contactBox.style.animation = "shrinkAndMoveContactBox 1s 0.3s forwards";
 }
 
-function growHome() {
+async function growHome() {
     //Shrink whichever folder is open
     switch (currentFolder) {
         case "home": 
@@ -231,6 +255,9 @@ function growHome() {
             shrinkContact();
             break;
     };
+
+    //0.6s pause
+    await new Promise(resolve => setTimeout(resolve, 1200));
 
     //Tell program that home folder is being opened
     currentFolder = "home";
@@ -238,14 +265,20 @@ function growHome() {
     //Get home folder coordinates, then apply the animation for each element    
     findHomeFolder("grow");
 
+    //Set default scales to 0 to avoid visual glitches
+    greeting.style.transform = "scale(0)";
+    myName.style.transform = "scale(0)";
+    intro.style.transform = "scale(0)";
+    instructions.style.transform = "scale(0)";
+
     //Animations
-    greeting.style.animation = "growAndMoveGreeting 1s forwards"; 
-    myName.style.animation = "growAndMoveName 1s forwards"; 
-    intro.style.animation = "growAndMoveIntro 1s forwards"
-    instructions.style.animation = "growAndMoveInstructions 1s forwards"
+    greeting.style.animation = "growAndMoveGreeting 1s 0.3s forwards";
+    myName.style.animation = "growAndMoveName 1s forwards";
+    intro.style.animation = "growAndMoveIntro 1s 0.6s forwards"
+    instructions.style.animation = "growAndMoveInstructions 1s 0.9s forwards"
 }
 
-function growAboutMe() {
+async function growAboutMe() {
     //Shrink whichever folder is open
     switch (currentFolder) {
         case "home": 
@@ -263,6 +296,9 @@ function growAboutMe() {
             shrinkContact();
             break;
     };
+
+    //0.6s pause
+    await new Promise(resolve => setTimeout(resolve, 1200));
 
     //Tell program that home folder is being opened
     currentFolder = "aboutMe";
@@ -270,13 +306,18 @@ function growAboutMe() {
     //Get home folder coordinates, then apply the animation for each element    
     findAboutMeFolder("grow");
 
+    //Set default scales to 0 to avoid visual glitches
+    aboutMeTitle.style.transform = "scale(0)";
+    aboutMeParagraph.style.transform = "scale(0)";
+    me.style.transform = "scale(0)";
+
     //Animations
-    aboutMeTitle.style.animation = "growAndMoveAboutMeTitle 1s forwards"; 
-    aboutMeParagraph.style.animation = "growAndMoveAboutMeParagraph 1s forwards";
-    me.style.animation = "growAndMoveMe 1s forwards";
+    aboutMeTitle.style.animation = "growAndMoveAboutMeTitle 1s 0s forwards"; 
+    aboutMeParagraph.style.animation = "growAndMoveAboutMeParagraph 1s 0.6s forwards";
+    me.style.animation = "growAndMoveMe 1s 0.3s forwards";
 }
 
-function growProjects() {
+async function growProjects() {
     //Shrink whichever folder is open
     switch (currentFolder) {
         case "home": 
@@ -294,6 +335,9 @@ function growProjects() {
             shrinkContact();
             break;
     };
+
+    //0.6s pause
+    await new Promise(resolve => setTimeout(resolve, 1200));
 
     //Tell program that home folder is being opened
     currentFolder = "projects";
@@ -301,15 +345,19 @@ function growProjects() {
     //Get home folder coordinates, then apply the animation for each element    
     findProjectsFolder("grow");
 
+    //Set default scales to 0 to avoid visual glitches
+    projectsTitle.style.transform = "scale(0)";
+    projectsGallery.style.transform = "scale(0)";
+
     //Animations
     projectsTitle.style.animation = "growAndMoveProjectsTitle 1s forwards"; 
-    projectsGallery.style.animation = "growAndMoveProjectsGallery 1s forwards"; 
+    projectsGallery.style.animation = "growAndMoveProjectsGallery 1s 0.5s forwards"; 
 
     //Set cursor to grab
     document.documentElement.style.cursor = "grab";
 }
 
-function growExperience() {
+async function growExperience() {
     //Shrink whichever folder is open
     switch (currentFolder) {
         case "home": 
@@ -328,19 +376,27 @@ function growExperience() {
             break;
     };
 
+    //0.6s pause
+    await new Promise(resolve => setTimeout(resolve, 1200));
+
     //Tell program that home folder is being opened
     currentFolder = "experience";
 
     //Get home folder coordinates, then apply the animation for each element    
     findExperienceFolder("grow");
 
+    //Set default scales to 0 to avoid visual glitches
+    experienceTitle.style.transform = "scale(0)";
+    experienceDescription.style.transform = "scale(0)";
+    myResume.style.transform = "scale(0)";
+
     //Animations
     experienceTitle.style.animation = "growAndMoveExperienceTitle 1s forwards"; 
-    experienceDescription.style.animation = "growAndMoveExperienceDescription 1s forwards"; 
-    myResume.style.animation = "growAndMoveMyResume 1s forwards"; 
+    experienceDescription.style.animation = "growAndMoveExperienceDescription 1s 0.6s forwards"; 
+    myResume.style.animation = "growAndMoveMyResume 1s 0.3s forwards"; 
 }
 
-function growContact() {
+async function growContact() {
     //Shrink whichever folder is open
     switch (currentFolder) {
         case "home": 
@@ -359,15 +415,22 @@ function growContact() {
             return;
     };
 
+    //0.6s pause
+    await new Promise(resolve => setTimeout(resolve, 1200));
+
     //Tell program that home folder is being opened
     currentFolder = "contact";
 
     //Get home folder coordinates, then apply the animation for each element    
     findContactFolder("grow");
 
+    //Set default scales to 0 to avoid visual glitches
+    contactTitle.style.transform = "scale(0)";
+    contactBox.style.transform = "scale(0)";
+
     //Animations
     contactTitle.style.animation = "growAndMoveContactTitle 1s forwards";
-    contactBox.style.animation = "growAndMoveContactBox 1s forwards"; 
+    contactBox.style.animation = "growAndMoveContactBox 1s 0.4s forwards"; 
 }
 
 /// Add ondblclick events to each folder ///

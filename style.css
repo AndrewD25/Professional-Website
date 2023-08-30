@@ -202,6 +202,8 @@ h1, h2, h3 {
 
     /*set position*/
     position: fixed;
+    top: var(--aboutMeTitleTop);
+    left: var(--aboutMeTitleLeft);
     transform: scale(0);
 }
 
@@ -213,6 +215,8 @@ h1, h2, h3 {
     
     /*set position*/
     position: fixed;
+    top: var(--aboutMeParagraphTop);
+    left: var(--aboutMeParagraphLeft);
     transform: scale(0);
 }
 
@@ -231,6 +235,8 @@ h1, h2, h3 {
 
     /*set position*/
     position: fixed;
+    top: var(--meTop);
+    left: var(--meLeft);
     transform: scale(0);
     z-index: -9999999999999;
 }
@@ -249,8 +255,8 @@ h1, h2, h3 {
 
     /*set position*/
     position: fixed;
-    top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
-    left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
+    top: var(--projectsTitleTop);
+    left: var(--projectsTitleLeft);
     transform: scale(0);
 }
 
@@ -263,8 +269,8 @@ h1, h2, h3 {
 
     /*set position*/
     position: absolute;
-    top: calc(var(--projectsFolderY) - var(--projectsTitleHeight) / 2);
-    left: calc(var(--projectsFolderX) - var(--projectsTitleWidth) / 2);
+    top: var(--projectsGalleryTop);
+    left: var(--projectsGalleryLeft);
     transform: scale(0);
 }
 
@@ -346,8 +352,8 @@ div.desc p {
 
     /*set position*/
     position: fixed;
-    top: calc(var(--experienceFolderY) - var(--experienceTitleHeight));
-    left: calc(var(--experienceFolderX) - var(--experienceTitleWidth));
+    top: var(--experienceTitleTop);
+    left: var(--experienceTitleLeft);
     transform: scale(0);
 }
 
@@ -356,8 +362,8 @@ div.desc p {
 
     /*set position*/
     position: fixed;
-    top: calc(var(--experienceFolderY) - var(--experienceDescriptionHeight));
-    left: calc(var(--experienceFolderX) - var(--experienceDescriptionWidth));
+    top: var(--experienceDescriptionTop);
+    left: var(--experienceDescriptionLeft);
     transform: scale(0);
 }
 
@@ -377,8 +383,8 @@ div.desc p {
 
     /*set position*/
     position: fixed;
-    top: calc(var(--experienceFolderY) - var(--myResumeHeight));
-    left: calc(var(--experienceFolderX) - var(--myResumeWidth));
+    top: var(--myResumeTop);
+    left: var(--myResumeLeft);
     transform: scale(0);
 }
 
@@ -407,8 +413,8 @@ div.desc p {
 
     /*set position*/
     position: fixed;
-    top: calc(var(--contactFolderY) - var(--contactTitleHeight));
-    left: calc(var(--contactFolderX) - var(--contactTitleWidth));
+    top: var(--contactTitleTop);
+    left: var(--contactTitleLeft);
     transform: scale(0);
 }
 
@@ -425,8 +431,8 @@ div.desc p {
 
     /*set position*/
     position: fixed;
-    top: calc(var(--contactBoxY) - var(--contactBoxHeight));
-    left: calc(var(--contactBoxX) - var(--contactBoxWidth));
+    top: var(--contactBoxTop);
+    left: var(--contactBoxLeft);
     transform: scale(0);
 }
 
