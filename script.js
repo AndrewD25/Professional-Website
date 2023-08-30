@@ -205,6 +205,12 @@ function shrinkProjects() {
     projectsTitle.style.animation = "shrinkAndMoveProjectsTitle 1s 0.6s forwards";
     projectsGallery.style.animation = "shrinkAndMoveProjectsGallery 1s 0.4s forwards";
 
+    //Deactivate Tabindex
+    let galleryImages = document.getElementsByClassName("galleryImg"); //Get array of all gallery images
+    for (let i = 0; i < galleryImages.length; i++) {
+        galleryImages[i].setAttribute("tabindex", "-1"); //Disable tabindex for each, on shrink
+    };
+
     //Reset cursor
     document.documentElement.style.cursor = "auto";
 }
@@ -222,6 +228,9 @@ function shrinkExperience() {
     experienceTitle.style.animation = "shrinkAndMoveExperienceTitle 1s 0.6s forwards";
     experienceDescription.style.animation = "shrinkAndMoveExperienceDescription 1s 0.3s forwards";
     myResume.style.animation = "shrinkAndMoveMyResume 1s forwards";
+
+    //Deactivate Tabindex
+    myResume.children[2].setAttribute("tabindex", "-1"); //Diable tab index on resume link
 }
 
 function shrinkContact() {
@@ -235,6 +244,18 @@ function shrinkContact() {
     //Animations
     contactTitle.style.animation = "shrinkAndMoveContactTitle 1s 0.6s forwards";
     contactBox.style.animation = "shrinkAndMoveContactBox 1s 0.3s forwards";
+
+    //Deactivate Tabindex
+     //Form elements
+     document.getElementById("nameInput").setAttribute("tabindex", "-1");
+     document.getElementById("emailInput").setAttribute("tabindex", "-1");
+     document.getElementById("messageInput").setAttribute("tabindex", "-1");
+     document.getElementById("submitContactForm").setAttribute("tabindex", "-1");
+      //Links to contact info
+     let contactLinks = document.getElementsByClassName("contactLink"); //Get array of all contact info links
+     for (let i = 0; i < contactLinks.length; i++) {
+         contactLinks[i].setAttribute("tabindex", "-1"); //Make each element in the array tab-able
+     };
 }
 
 async function growHome() {
@@ -258,6 +279,9 @@ async function growHome() {
 
     //0.6s pause
     await new Promise(resolve => setTimeout(resolve, 1200));
+
+    //Change the page title
+    document.title = "Hi, I'm Andrew Deal";
 
     //Tell program that home folder is being opened
     currentFolder = "home";
@@ -300,6 +324,9 @@ async function growAboutMe() {
     //0.6s pause
     await new Promise(resolve => setTimeout(resolve, 1200));
 
+    //Change the page title
+    document.title = "About Me";
+
     //Tell program that home folder is being opened
     currentFolder = "aboutMe";
 
@@ -339,6 +366,9 @@ async function growProjects() {
     //0.6s pause
     await new Promise(resolve => setTimeout(resolve, 1200));
 
+    //Change the page title
+    document.title = "My Portfolio";
+
     //Tell program that home folder is being opened
     currentFolder = "projects";
 
@@ -352,6 +382,12 @@ async function growProjects() {
     //Animations
     projectsTitle.style.animation = "growAndMoveProjectsTitle 1s forwards"; 
     projectsGallery.style.animation = "growAndMoveProjectsGallery 1s 0.5s forwards"; 
+
+    //Active tabindex for keyboard users
+    let galleryImages = document.getElementsByClassName("galleryImg"); //Get array of all gallery images
+    for (let i = 0; i < galleryImages.length; i++) {
+        galleryImages[i].setAttribute("tabindex", "0"); //Make each element in the array tab-able
+    };
 
     //Set cursor to grab
     document.documentElement.style.cursor = "grab";
@@ -379,6 +415,9 @@ async function growExperience() {
     //0.6s pause
     await new Promise(resolve => setTimeout(resolve, 1200));
 
+    //Change the page title
+    document.title = "Experience and Resume";
+    
     //Tell program that home folder is being opened
     currentFolder = "experience";
 
@@ -394,6 +433,9 @@ async function growExperience() {
     experienceTitle.style.animation = "growAndMoveExperienceTitle 1s forwards"; 
     experienceDescription.style.animation = "growAndMoveExperienceDescription 1s 0.6s forwards"; 
     myResume.style.animation = "growAndMoveMyResume 1s 0.3s forwards"; 
+
+    //Active tabindex for keyboard users
+    myResume.children[2].setAttribute("tabindex", "0"); //Add tab index to resume link
 }
 
 async function growContact() {
@@ -414,9 +456,11 @@ async function growContact() {
         case "contact":
             return;
     };
-
     //0.6s pause
     await new Promise(resolve => setTimeout(resolve, 1200));
+    
+    //Change the page title
+    document.title = "Contact Me!";
 
     //Tell program that home folder is being opened
     currentFolder = "contact";
@@ -431,6 +475,18 @@ async function growContact() {
     //Animations
     contactTitle.style.animation = "growAndMoveContactTitle 1s forwards";
     contactBox.style.animation = "growAndMoveContactBox 1s 0.4s forwards"; 
+
+    //Active tabindex for keyboard users
+     //Form elements
+    document.getElementById("nameInput").setAttribute("tabindex", "0");
+    document.getElementById("emailInput").setAttribute("tabindex", "0");
+    document.getElementById("messageInput").setAttribute("tabindex", "0");
+    document.getElementById("submitContactForm").setAttribute("tabindex", "0");
+     //Links to contact info
+    let contactLinks = document.getElementsByClassName("contactLink"); //Get array of all contact info links
+    for (let i = 0; i < contactLinks.length; i++) {
+        contactLinks[i].setAttribute("tabindex", "0"); //Make each element in the array tab-able
+    };
 }
 
 /// Add ondblclick events to each folder ///
@@ -439,6 +495,13 @@ aboutMeFolder.ondblclick = growAboutMe; //Or the updated grow (any folder) funct
 projectsFolder.ondblclick = growProjects; //Or the updated grow (any folder) function if I figure out how to do that sooner than later
 experienceFolder.ondblclick = growExperience;
 contactFolder.ondblclick = growContact;
+
+///Add on-enter-press event to each folder for accessibilty///
+homeFolder.addEventListener('keydown', (event) => {if (event.key === 'Enter') {growHome();}});
+aboutMeFolder.addEventListener('keydown', (event) => {if (event.key === 'Enter') {growAboutMe();}});
+projectsFolder.addEventListener('keydown', (event) => {if (event.key === 'Enter') {growProjects();}});
+experienceFolder.addEventListener('keydown', (event) => {if (event.key === 'Enter') {growExperience();}});
+contactFolder.addEventListener('keydown', (event) => {if (event.key === 'Enter') {growContact();}});
 
 /// Give myName an event that keeps its animation ///
 //Temporarily disabled because it's buggy
