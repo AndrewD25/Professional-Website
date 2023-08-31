@@ -1,7 +1,7 @@
 /*
 Andrew Deal
-Professional Website
-Presentation on 8/15/23
+HTML/CSS Capstone Project
+August 31, 2023
 */
 
 :root { 
@@ -46,7 +46,6 @@ Presentation on 8/15/23
     scrollbar-width: none;
 }
 
-
 body {
     background-color: #f0f8ff;
 
@@ -59,18 +58,17 @@ body {
     /*Overflow handling stops vertical scrolling but allows horizontal which helps on projects page*/
     overflow-x: auto;
     overflow-y: hidden;
-}
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-    display: none;
-  }
-  
-/* Hide scrollbar for IE, Edge and Firefox */
-body {
+    /*Backup scrollbar hiding just to make sure it doesn't show up on any browser */
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+/*Backup scrollbar hiding just to make sure it doesn't show up on any browser */
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
 
 h1, h2, h3 {
     margin: 0;
@@ -240,6 +238,15 @@ h1, h2, h3 {
     left: var(--meLeft);
     transform: scale(0);
     z-index: -9999999999999;
+}
+
+/*When screen gets to a weird aspect ratio (too short), make sure my img is full height*/
+@media (max-height: 250px), (min-aspect-ratio: 2/1) {
+    #me {
+        height: 100vh;
+        width: auto;
+        aspect-ratio: auto;
+    }
 }
 
 #projectsTitle {

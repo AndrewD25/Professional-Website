@@ -1,7 +1,7 @@
 /*
 Andrew Deal
-Professional Website
-Presentation on 8/15/23
+HTML/CSS Capstone Project
+August 31, 2023
 */
 
 "use strict"
@@ -200,6 +200,13 @@ function shrinkProjects() {
     //By setting default scales to 1 here, it ensures that the animation delay does not make them disappear from the page
     projectsTitle.style.transform = "scale(1)";
     projectsGallery.style.transform = "scale(1)";
+
+    //Scroll window back to left side so that the project gallery shrinking animation is more smooth
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
 
     //Animations
     projectsTitle.style.animation = "shrinkAndMoveProjectsTitle 1s 0.6s forwards";
