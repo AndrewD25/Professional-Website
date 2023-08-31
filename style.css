@@ -5,7 +5,8 @@ August 31, 2023
 */
 
 :root { 
-    --myBlue: #0ec0e4;
+    /*--myBlue: #0ec0e4;*/
+    --myBlue: #0e9ccf;
     
     /*Define left and right values for each element here*/
     /*This makes changing them easier because it applies to original position + animations*/
@@ -47,10 +48,11 @@ August 31, 2023
 }
 
 body {
-    background-color: #f0f8ff;
-
-    /*A spot if I ever want to add an img background
-    background: url("https://img.freepik.com/premium-vector/abstract-seamless-pattern-background-with-artistic-style_7505-1600.jpg?w=1380");*/
+    /*background-color: #f0f8ff;*/
+    background: url("Images/backgroundSlower.gif");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 
     margin: 0;
     height: 99vh;
