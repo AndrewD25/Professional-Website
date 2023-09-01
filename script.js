@@ -23,6 +23,7 @@ const me = document.getElementById("me");
 
 //Projects page
 const projectsTitle = document.getElementById("projectsTitle");
+const projectsInstructions = document.getElementById("projectsInstructions");
 const projectsGallery = document.getElementById("projectsGallery");
 
 //Experience page
@@ -58,6 +59,8 @@ function getCoords() {
     //Projects
     r.style.setProperty('--projectsTitleWidth', `${projectsTitle.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--projectsTitleHeight', `${projectsTitle.getBoundingClientRect().height / 2}px`);
+    r.style.setProperty('--projectsInstructionsWidth', `${projectsInstructions.getBoundingClientRect().width / 2}px`);
+    r.style.setProperty('--projectsInstructionsHeight', `${projectsInstructions.getBoundingClientRect().height / 2}px`);
     r.style.setProperty('--projectsGalleryWidth', `${projectsGallery.getBoundingClientRect().width / 2}px`);
     r.style.setProperty('--projectsGalleryHeight', `${projectsGallery.getBoundingClientRect().height / 2}px`);
 
@@ -199,6 +202,7 @@ function shrinkProjects() {
 
     //By setting default scales to 1 here, it ensures that the animation delay does not make them disappear from the page
     projectsTitle.style.transform = "scale(1)";
+    projectsInstructions.style.transform = "scale(1)";
     projectsGallery.style.transform = "scale(1)";
 
     //Scroll window back to left side so that the project gallery shrinking animation is more smooth
@@ -210,7 +214,8 @@ function shrinkProjects() {
 
     //Animations
     projectsTitle.style.animation = "shrinkAndMoveProjectsTitle 1s 0.6s forwards";
-    projectsGallery.style.animation = "shrinkAndMoveProjectsGallery 1s 0.4s forwards";
+    projectsInstructions.style.animation = "shrinkAndMoveProjectsInstructions 1s 0.4s forwards";
+    projectsGallery.style.animation = "shrinkAndMoveProjectsGallery 1s 0.2s forwards";
 
     //Deactivate Tabindex
     let galleryImages = document.getElementsByClassName("galleryImg"); //Get array of all gallery images
@@ -384,11 +389,13 @@ async function growProjects() {
 
     //Set default scales to 0 to avoid visual glitches
     projectsTitle.style.transform = "scale(0)";
+    projectsInstructions.style.transform = "scale(0)";
     projectsGallery.style.transform = "scale(0)";
 
     //Animations
     projectsTitle.style.animation = "growAndMoveProjectsTitle 1s forwards"; 
-    projectsGallery.style.animation = "growAndMoveProjectsGallery 1s 0.5s forwards"; 
+    projectsInstructions.style.animation = "growAndMoveProjectsInstructions 1s 0.3s forwards"; 
+    projectsGallery.style.animation = "growAndMoveProjectsGallery 1s 0.6s forwards"; 
 
     //Active tabindex for keyboard users
     let galleryImages = document.getElementsByClassName("galleryImg"); //Get array of all gallery images
@@ -533,12 +540,18 @@ document.addEventListener('mousedown', (event) => {
             isDragging = true;
             startX = event.clientX;
             event.preventDefault();// Prevents text selection during drag
+            document.documentElement.style.cursor = "grabbing";
         } 
     }
 });
 
 document.addEventListener('mouseup', () => {
-  isDragging = false;
+    isDragging = false;
+    if (currentFolder === 'projects') {
+        document.documentElement.style.cursor = "grab";
+    } else {
+        document.documentElement.style.cursor = "auto";
+    }
 });
 
 document.addEventListener('mousemove', (event) => {
@@ -548,3 +561,4 @@ document.addEventListener('mousemove', (event) => {
     startX = event.clientX;
   }
 });
+

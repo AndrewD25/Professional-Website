@@ -26,8 +26,10 @@ August 31, 2023
     --meTop: 0px;
     --meLeft: 0px; 
 
-    --projectsTitleTop: clamp(1vh, 4vw, 8vh);
-    --projectsTitleLeft: 0vw;
+    --projectsTitleTop: clamp(1vh, 3.5vw, 7vh);
+    --projectsTitleLeft: 0px;
+    --projectsInstructionsTop: clamp(1vh, 12vw, 23vh);
+    --projectsInstructionsLeft: 0px;
     --projectsGalleryTop: clamp(1vh, 18vw, 32vh);
     --projectsGalleryLeft: 0px;
 
@@ -39,7 +41,7 @@ August 31, 2023
     --myResumeLeft: 63vw; 
 
     --contactTitleTop: clamp(1vh, 5vw, 10vh);
-    --contactTitleLeft: 0vw;
+    --contactTitleLeft: 0px;
     --contactBoxTop: clamp(1vh, 13.5vw, 27vh);
     --contactBoxLeft: 15vw;
 
@@ -270,6 +272,19 @@ h1, h2, h3 {
     transform: scale(0);
 }
 
+#projectsInstructions {
+    font-size: clamp(1px, 1.5vw, 3vh);
+    white-space: nowrap; 
+    width: 100vw;
+    text-align: center;
+
+    /*set position*/
+    position: fixed;
+    top: var(--projectsInstructionsTop);
+    left: var(--projectsInstructionsLeft);
+    transform: scale(0);
+}
+
 #projectsGallery {
     /*background-color: rgb(112, 112, 112); unused styling for gallery, was too bold and loud
     border-block: 5px solid var(--myBlue);*/
@@ -350,6 +365,18 @@ h1, h2, h3 {
 .python {
     background-color: rgb(4, 99, 0);
 }
+
+/*For the tags that show a use instead of a language, I chose to use black text to show the difference*/
+.game {
+    background-color: rgb(238, 126, 163);
+    color: black !important;
+}
+
+.tool {
+    background-color: rgb(255, 237, 158);
+    color: black !important;
+}
+
 /*           End of Tag Coloring section             */
 
 #experienceTitle {
@@ -791,6 +818,36 @@ exact same pattern        */
     to {
         top: var(--projectsTitleTop);
         left: var(--projectsTitleLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
+@keyframes shrinkAndMoveProjectsInstructions {
+    from {
+        top: var(--projectsInstructionsTop);
+        left: var(--projectsInstructionsLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--projectsFolderY) - var(--projectsInstructionsHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsInstructionsWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveProjectsInstructions {
+    from {
+        top: calc(var(--projectsFolderY) - var(--projectsInstructionsHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsInstructionsWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--projectsInstructionsTop);
+        left: var(--projectsInstructionsLeft);
         transform: scale(1);
         transform-origin: top left;
     }
