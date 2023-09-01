@@ -1,6 +1,6 @@
 /*
 Andrew Deal
-HTML/CSS Capstone Project
+Professional Website
 August 31, 2023
 */
 
@@ -93,6 +93,39 @@ h1, h2, h3 {
     white-space: nowrap; 
 }
 
+/*The animations are pretty repitive on how they work so there are comments 
+    explaining this first one, the rest are just copy/pasted from this same logic*/
+@keyframes shrinkAndMoveGreeting {
+    from {
+        top: var(--greetingTop); /*Start position when open*/
+        left: var(--greetingLeft); /*Start position when open*/
+        transform: scale(1); /*Start at 100% scale*/
+        transform-origin: center; /*Uses a changing transform origin because without it, the animation is not as smooth*/
+    }
+    to {
+        top: calc(var(--homeFolderY) - var(--greetingHeight)); /*Centers the height against the (center) Y of the folder*/
+        left: calc(var(--homeFolderX) - var(--greetingWidth)); /*Centers the width against the (center) X of the folder*/
+        transform: scale(0); /*Shrink to 0% scale*/
+        transform-origin: center; 
+    }
+}
+
+@keyframes growAndMoveGreeting {
+    from {
+        top: calc(var(--homeFolderY) - var(--greetingHeight)); /*Start centered vertically and...*/
+        left: calc(var(--homeFolderX) - var(--greetingWidth)); /*...horizontally on the folder*/
+        transform: scale(0); /*Starts at 0% scale*/
+        transform-origin: top left; /*Note that shrinking and growing each have a transform origin that looks nicer for that animation,
+                                        center and top left respectively*/
+    }
+    to {
+        top: var(--greetingTop); /*move to the set position saved in the root variables*/
+        left: var(--greetingLeft); /*move to the set position saved in the root variables*/
+        transform: scale(1); /*Grow to full scale*/
+        transform-origin: top left;
+    }
+}
+
 #name {
     font-family: monospace serif;
     font-size: clamp(1px, 11vw, 22vh);
@@ -121,6 +154,36 @@ h1, h2, h3 {
     position: fixed;
     top: var(--nameTop);
     left: var(--nameLeft);
+}
+
+@keyframes shrinkAndMoveName {
+    from {
+        top: var(--nameTop);
+        left: var(--nameLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--homeFolderY) - var(--myNameHeight));
+        left: calc(var(--homeFolderX) - var(--myNameWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveName {
+    from {
+        top: calc(var(--homeFolderY) - var(--myNameHeight));
+        left: calc(var(--homeFolderX) - var(--myNameWidth)); 
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--nameTop);
+        left: var(--nameLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
 }
 
 /* For future mobile sizing
@@ -172,6 +235,36 @@ h1, h2, h3 {
     white-space: nowrap; 
 }
 
+@keyframes shrinkAndMoveIntro {
+    from {
+        top: var(--introTop);
+        left: var(--introLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--homeFolderY) - var(--introHeight));
+        left: calc(var(--homeFolderX) - var(--introWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveIntro {
+    from {
+        top: calc(var(--homeFolderY) - var(--introHeight));
+        left: calc(var(--homeFolderX) - var(--introWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--introTop);
+        left: var(--introLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
 #instructions {
     font-size: clamp(1px, 3vw, 6vh);
     white-space: nowrap; 
@@ -180,6 +273,36 @@ h1, h2, h3 {
     position: fixed;
     top: var(--instructionsTop);
     left: var(--instructionsLeft);
+}
+
+@keyframes shrinkAndMoveInstructions {
+    from {
+        top: var(--instructionsTop);
+        left: var(--instructionsLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--homeFolderY) - var(--instructionsHeight));
+        left: calc(var(--homeFolderX) - var(--instructionsWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveInstructions {
+    from {
+        top: calc(var(--homeFolderY) - var(--instructionsHeight));
+        left: calc(var(--homeFolderX) - var(--instructionsWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--instructionsTop);
+        left: var(--instructionsLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
 }
 
 .blueText { /*Used in a span to give the double-click instruction text a similar styling 
@@ -210,6 +333,36 @@ h1, h2, h3 {
     transform: scale(0);
 }
 
+@keyframes shrinkAndMoveAboutMeTitle {
+    from {
+        top: var(--aboutMeTitleTop);
+        left: var(--aboutMeTitleLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight));
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveAboutMeTitle {
+    from {
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight));
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--aboutMeTitleTop);
+        left: var(--aboutMeTitleLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
 #aboutMeParagraph {
     font-size: clamp(1px, 1.75vw, 3.5vh);
     max-height: 60vh;
@@ -228,6 +381,36 @@ h1, h2, h3 {
     #aboutMeParagraph {
         width: clamp(1vw, 45vw, 95vh);
         max-height: 70vh;
+    }
+}
+
+@keyframes shrinkAndMoveAboutMeParagraph {
+    from {
+        top: var(--aboutMeParagraphTop);
+        left: var(--aboutMeParagraphLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight));
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveAboutMeParagraph {
+    from {
+        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight));
+        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--aboutMeParagraphTop);
+        left: var(--aboutMeParagraphLeft);
+        transform: scale(1);
+        transform-origin: top left;
     }
 }
 
@@ -253,6 +436,36 @@ h1, h2, h3 {
     }
 }
 
+@keyframes shrinkAndMoveMe {
+    from {
+        top: var(--meTop);
+        left: var(--meLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--aboutMeFolderY) - var(--meHeight));
+        left: calc(var(--aboutMeFolderX) - var(--meWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveMe {
+    from {
+        top: calc(var(--aboutMeFolderY) - var(--meHeight));
+        left: calc(var(--aboutMeFolderX) - var(--meWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--meTop);
+        left: var(--meLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
 #projectsTitle {
     color: rgba(0, 0, 0, 0);
     -webkit-text-stroke: 0.1vw black; /* Outline width and color */
@@ -272,6 +485,37 @@ h1, h2, h3 {
     transform: scale(0);
 }
 
+@keyframes shrinkAndMoveProjectsTitle {
+    from {
+        top: var(--projectsTitleTop);
+        left: var(--projectsTitleLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveProjectsTitle {
+    from {
+        top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--projectsTitleTop);
+        left: var(--projectsTitleLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
+
 #projectsInstructions {
     font-size: clamp(1px, 1.5vw, 3vh);
     white-space: nowrap; 
@@ -283,6 +527,36 @@ h1, h2, h3 {
     top: var(--projectsInstructionsTop);
     left: var(--projectsInstructionsLeft);
     transform: scale(0);
+}
+
+@keyframes shrinkAndMoveProjectsInstructions {
+    from {
+        top: var(--projectsInstructionsTop);
+        left: var(--projectsInstructionsLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--projectsFolderY) - var(--projectsInstructionsHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsInstructionsWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveProjectsInstructions {
+    from {
+        top: calc(var(--projectsFolderY) - var(--projectsInstructionsHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsInstructionsWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--projectsInstructionsTop);
+        left: var(--projectsInstructionsLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
 }
 
 #projectsGallery {
@@ -379,6 +653,36 @@ h1, h2, h3 {
 
 /*           End of Tag Coloring section             */
 
+@keyframes shrinkAndMoveProjectsGallery {
+    from {
+        top: var(--projectsGalleryTop);
+        left: var(--projectsGalleryLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--projectsFolderY) - var(--projectsGalleryHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsGalleryWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveProjectsGallery {
+    from {
+        top: calc(var(--projectsFolderY) - var(--projectsGalleryHeight));
+        left: calc(var(--projectsFolderX) - var(--projectsGalleryWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--projectsGalleryTop);
+        left: var(--projectsGalleryLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
 #experienceTitle {
     color: rgba(0, 0, 0, 0);
     -webkit-text-stroke: 0.1vw black; /* Outline width and color */
@@ -394,6 +698,36 @@ h1, h2, h3 {
     top: var(--experienceTitleTop);
     left: var(--experienceTitleLeft);
     transform: scale(0);
+}
+
+@keyframes shrinkAndMoveExperienceTitle {
+    from {
+        top: var(--experienceTitleTop);
+        left: var(--experienceTitleLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--experienceFolderY) - var(--experienceTitleHeight));
+        left: calc(var(--experienceFolderX) - var(--experienceTitleWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveExperienceTitle {
+    from {
+        top: calc(var(--experienceFolderY) - var(--experienceTitleHeight));
+        left: calc(var(--experienceFolderX) - var(--experienceTitleWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--experienceTitleTop);
+        left: var(--experienceTitleLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
 }
 
 #experienceDescription {
@@ -417,6 +751,36 @@ h1, h2, h3 {
     color: var(--myBlue);
     content: '✧';
     margin-right: 0.1vw;
+}
+
+@keyframes shrinkAndMoveExperienceDescription {
+    from {
+        top: var(--experienceDescriptionTop);
+        left: var(--experienceDescriptionLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--experienceFolderY) - var(--experienceDescriptionHeight));
+        left: calc(var(--experienceFolderX) - var(--experienceDescriptionWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveExperienceDescription {
+    from {
+        top: calc(var(--experienceFolderY) - var(--experienceDescriptionHeight));
+        left: calc(var(--experienceFolderX) - var(--experienceDescriptionWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--experienceDescriptionTop);
+        left: var(--experienceDescriptionLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
 }
 
 #myResume {
@@ -446,6 +810,36 @@ h1, h2, h3 {
     font-size: clamp(1px, 1.25vw, 2.5vh);
 }
 
+@keyframes shrinkAndMoveMyResume {
+    from {
+        top: var(--myResumeTop);
+        left: var(--myResumeLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--experienceFolderY) - var(--myResumeHeight));
+        left: calc(var(--experienceFolderX) - var(--myResumeWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveMyResume {
+    from {
+        top: calc(var(--experienceFolderY) - var(--myResumeHeight));
+        left: calc(var(--experienceFolderX) - var(--myResumeWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--myResumeTop);
+        left: var(--myResumeLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
+}
+
 #contactTitle {
     color: rgba(0, 0, 0, 0); 
     -webkit-text-stroke: 0.1vw black; /* Outline width and color */
@@ -463,6 +857,36 @@ h1, h2, h3 {
     top: var(--contactTitleTop);
     left: var(--contactTitleLeft);
     transform: scale(0);
+}
+
+@keyframes shrinkAndMoveContactTitle {
+    from {
+        top: var(--contactTitleTop);
+        left: var(--contactTitleLeft);
+        transform: scale(1);
+        transform-origin: center;
+    }
+    to {
+        top: calc(var(--contactFolderY) - var(--contactTitleHeight));
+        left: calc(var(--contactFolderX) - var(--contactTitleWidth));
+        transform: scale(0);
+        transform-origin: center;
+    }
+}
+
+@keyframes growAndMoveContactTitle {
+    from {
+        top: calc(var(--contactFolderY) - var(--contactTitleHeight));
+        left: calc(var(--contactFolderX) - var(--contactTitleWidth));
+        transform: scale(0);
+        transform-origin: top left;
+    }
+    to {
+        top: var(--contactTitleTop);
+        left: var(--contactTitleLeft);
+        transform: scale(1);
+        transform-origin: top left;
+    }
 }
 
 #contactBox {
@@ -574,435 +998,6 @@ h1, h2, h3 {
     color: var(--myBlue);
 }
 
-
-/*--------ANIMATIONS--------/
-This section gets pretty repetitive, so there
-are comments explaining the first shrink and 
-grow animations, but the rest follow the 
-exact same pattern        */
-
-
-@keyframes shrinkAndMoveGreeting {
-    from {
-        top: var(--greetingTop); /*Start position when open*/
-        left: var(--greetingLeft); /*Start position when open*/
-        transform: scale(1); /*Start at 100% scale*/
-        transform-origin: center; /*Uses a changing transform origin because without it, the animation is not as smooth*/
-    }
-    to {
-        top: calc(var(--homeFolderY) - var(--greetingHeight)); /*Centers the height against the (center) Y of the folder*/
-        left: calc(var(--homeFolderX) - var(--greetingWidth)); /*Centers the width against the (center) X of the folder*/
-        transform: scale(0); /*Shrink to 0% scale*/
-        transform-origin: center; 
-    }
-}
-
-@keyframes growAndMoveGreeting {
-    from {
-        top: calc(var(--homeFolderY) - var(--greetingHeight)); /*Start centered vertically and...*/
-        left: calc(var(--homeFolderX) - var(--greetingWidth)); /*...horizontally on the folder*/
-        transform: scale(0); /*Starts at 0% scale*/
-        transform-origin: top left; /*Note that shrinking and growing each have a transform origin that looks nicer for that animation,
-                                        center and top left respectively*/
-    }
-    to {
-        top: var(--greetingTop); /*move to the set position saved in the root variables*/
-        left: var(--greetingLeft); /*move to the set position saved in the root variables*/
-        transform: scale(1); /*Grow to full scale*/
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveName {
-    from {
-        top: var(--nameTop);
-        left: var(--nameLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--homeFolderY) - var(--myNameHeight));
-        left: calc(var(--homeFolderX) - var(--myNameWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveName {
-    from {
-        top: calc(var(--homeFolderY) - var(--myNameHeight));
-        left: calc(var(--homeFolderX) - var(--myNameWidth)); 
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--nameTop);
-        left: var(--nameLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveIntro {
-    from {
-        top: var(--introTop);
-        left: var(--introLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--homeFolderY) - var(--introHeight));
-        left: calc(var(--homeFolderX) - var(--introWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveIntro {
-    from {
-        top: calc(var(--homeFolderY) - var(--introHeight));
-        left: calc(var(--homeFolderX) - var(--introWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--introTop);
-        left: var(--introLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveInstructions {
-    from {
-        top: var(--instructionsTop);
-        left: var(--instructionsLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--homeFolderY) - var(--instructionsHeight));
-        left: calc(var(--homeFolderX) - var(--instructionsWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveInstructions {
-    from {
-        top: calc(var(--homeFolderY) - var(--instructionsHeight));
-        left: calc(var(--homeFolderX) - var(--instructionsWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--instructionsTop);
-        left: var(--instructionsLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveAboutMeTitle {
-    from {
-        top: var(--aboutMeTitleTop);
-        left: var(--aboutMeTitleLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight));
-        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveAboutMeTitle {
-    from {
-        top: calc(var(--aboutMeFolderY) - var(--aboutMeTitleHeight));
-        left: calc(var(--aboutMeFolderX) - var(--aboutMeTitleWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--aboutMeTitleTop);
-        left: var(--aboutMeTitleLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveAboutMeParagraph {
-    from {
-        top: var(--aboutMeParagraphTop);
-        left: var(--aboutMeParagraphLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight));
-        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveAboutMeParagraph {
-    from {
-        top: calc(var(--aboutMeFolderY) - var(--aboutMeParagraphHeight));
-        left: calc(var(--aboutMeFolderX) - var(--aboutMeParagraphWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--aboutMeParagraphTop);
-        left: var(--aboutMeParagraphLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveMe {
-    from {
-        top: var(--meTop);
-        left: var(--meLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--aboutMeFolderY) - var(--meHeight));
-        left: calc(var(--aboutMeFolderX) - var(--meWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveMe {
-    from {
-        top: calc(var(--aboutMeFolderY) - var(--meHeight));
-        left: calc(var(--aboutMeFolderX) - var(--meWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--meTop);
-        left: var(--meLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveProjectsTitle {
-    from {
-        top: var(--projectsTitleTop);
-        left: var(--projectsTitleLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
-        left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveProjectsTitle {
-    from {
-        top: calc(var(--projectsFolderY) - var(--projectsTitleHeight));
-        left: calc(var(--projectsFolderX) - var(--projectsTitleWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--projectsTitleTop);
-        left: var(--projectsTitleLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveProjectsInstructions {
-    from {
-        top: var(--projectsInstructionsTop);
-        left: var(--projectsInstructionsLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--projectsFolderY) - var(--projectsInstructionsHeight));
-        left: calc(var(--projectsFolderX) - var(--projectsInstructionsWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveProjectsInstructions {
-    from {
-        top: calc(var(--projectsFolderY) - var(--projectsInstructionsHeight));
-        left: calc(var(--projectsFolderX) - var(--projectsInstructionsWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--projectsInstructionsTop);
-        left: var(--projectsInstructionsLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveProjectsGallery {
-    from {
-        top: var(--projectsGalleryTop);
-        left: var(--projectsGalleryLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--projectsFolderY) - var(--projectsGalleryHeight));
-        left: calc(var(--projectsFolderX) - var(--projectsGalleryWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveProjectsGallery {
-    from {
-        top: calc(var(--projectsFolderY) - var(--projectsGalleryHeight));
-        left: calc(var(--projectsFolderX) - var(--projectsGalleryWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--projectsGalleryTop);
-        left: var(--projectsGalleryLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveExperienceTitle {
-    from {
-        top: var(--experienceTitleTop);
-        left: var(--experienceTitleLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--experienceFolderY) - var(--experienceTitleHeight));
-        left: calc(var(--experienceFolderX) - var(--experienceTitleWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveExperienceTitle {
-    from {
-        top: calc(var(--experienceFolderY) - var(--experienceTitleHeight));
-        left: calc(var(--experienceFolderX) - var(--experienceTitleWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--experienceTitleTop);
-        left: var(--experienceTitleLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveExperienceDescription {
-    from {
-        top: var(--experienceDescriptionTop);
-        left: var(--experienceDescriptionLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--experienceFolderY) - var(--experienceDescriptionHeight));
-        left: calc(var(--experienceFolderX) - var(--experienceDescriptionWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveExperienceDescription {
-    from {
-        top: calc(var(--experienceFolderY) - var(--experienceDescriptionHeight));
-        left: calc(var(--experienceFolderX) - var(--experienceDescriptionWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--experienceDescriptionTop);
-        left: var(--experienceDescriptionLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveMyResume {
-    from {
-        top: var(--myResumeTop);
-        left: var(--myResumeLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--experienceFolderY) - var(--myResumeHeight));
-        left: calc(var(--experienceFolderX) - var(--myResumeWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveMyResume {
-    from {
-        top: calc(var(--experienceFolderY) - var(--myResumeHeight));
-        left: calc(var(--experienceFolderX) - var(--myResumeWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--myResumeTop);
-        left: var(--myResumeLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
-@keyframes shrinkAndMoveContactTitle {
-    from {
-        top: var(--contactTitleTop);
-        left: var(--contactTitleLeft);
-        transform: scale(1);
-        transform-origin: center;
-    }
-    to {
-        top: calc(var(--contactFolderY) - var(--contactTitleHeight));
-        left: calc(var(--contactFolderX) - var(--contactTitleWidth));
-        transform: scale(0);
-        transform-origin: center;
-    }
-}
-
-@keyframes growAndMoveContactTitle {
-    from {
-        top: calc(var(--contactFolderY) - var(--contactTitleHeight));
-        left: calc(var(--contactFolderX) - var(--contactTitleWidth));
-        transform: scale(0);
-        transform-origin: top left;
-    }
-    to {
-        top: var(--contactTitleTop);
-        left: var(--contactTitleLeft);
-        transform: scale(1);
-        transform-origin: top left;
-    }
-}
-
 @keyframes shrinkAndMoveContactBox {
     from {
         top: var(--contactBoxTop);
@@ -1032,10 +1027,8 @@ exact same pattern        */
         transform-origin: top left;
     }
 }
-/*------END OF ANIMATIONS SECTION-----------*/
 
-
-/*Styling for folder container at the bottom*/
+/*Styling for navigation folders*/
 #folderContainer {
     position: fixed;
     bottom: 0;
@@ -1079,6 +1072,7 @@ exact same pattern        */
 }
 
 #folderContainer p {
+    font-family: sans-serif;
     margin-block: 0;
     font-size: clamp(0.5vh, 1.5vw, 3vh);
     pointer-events: none;

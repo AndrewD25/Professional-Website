@@ -1,6 +1,6 @@
 /*
 Andrew Deal
-HTML/CSS Capstone Project
+Professional Website
 August 31, 2023
 */
 
