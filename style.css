@@ -915,7 +915,7 @@ h1, h2, h3 {
 }
 
 #contactLeftSide {
-    width: 50%;
+    width: 59%;
     display: inline-block;
     border-right: 0.1vw solid black;
     padding-right: 1vw;
@@ -964,7 +964,7 @@ h1, h2, h3 {
 }
 
 #contactRightSide {
-    width: 50%;
+    width: 41%;
     display: inline-block;
     padding-left: 1vw;
 }
